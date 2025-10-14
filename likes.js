@@ -2,7 +2,7 @@
 const projectDescriptions = [
   "Structural design of heavy and light steel projects in Saudi Arabia, including MBC Studios, Six Flags Qiddiya (Al Nahda – Seven Group), and fuel station canopies. All projects were designed from scratch in compliance with the American code",
   "Structural design and 3D modeling of complex steel frameworks for the Porto Cruise Alamein project, including roof trusses and special architectural steel systems. Work involved analytical modeling, load optimization, and ensuring compliance with design codes for stability and constructability.",
-  "ولبحرية.",
+  " Wait Me Soon.",
   "Structural design and modeling of several steel projects, including warehouses, hangars, and architectural frames. All designs were developed from scratch according to American and Egyptian codes, ensuring strength, stability, and safety.",
   "Development of customized Excel sheets for structural analysis, load calculations, and steel design automation, enhancing accuracy, speed, and overall design efficiency.",
 ];
