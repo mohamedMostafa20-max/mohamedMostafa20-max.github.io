@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Mohamed Mostafa</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Slab:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="left-column">
+      <div class="profile-stack">
+        <img src="profile.jpg" alt="Profile" />
+      </div>
+      <div class="typing-container">
+        <h1 id="typing-name"></h1>
+        <p id="typing-title"></p>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <section class="about-me">
+        <h2>About Me</h2>
+        <p>
+          I am a Civil and Steel Design Engineer specialized in warehouses, petrol stations, and large-scale
+          projects. Skilled in structural design according to Egyptian and American codes, with expertise in
+          creating precise project drawings and managing structural details efficiently.
+        </p>
+      </section>
+
+      <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>SAP</li>
+          <li>AutoCAD</li>
+          <li>Idea Statica</li>
+          <li>Hilti & Spit</li>
+          <li>bluebeam revu</li>
+          <li>STAAD Pro</li>
+          <li>Revit Structural</li>
+          <li>SP Column</li>
+          <li>ETABS</li>
+          <li>Safe</li>
+          <li>Photoshop</li>
+          <li>Tekla</li>
+          <li>IFC Viewer</li>
+          <li>Office</li>
+        </ul>
+      </section>
+
+      <section class="contact">
+        <h2>Contact</h2>
+        <p>Phone: 01140949980</p>
+        <p>
+          <a href="https://wa.me/201140949980" target="_blank">WhatsApp</a> -
+          <a href="https://www.linkedin.com/in/mohamedmostafa20/" target="_blank">LinkedIn</a>
+        </p>
+      </section>
+
+      <section class="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <!-- مشروع 1 -->
+          <div class="project-card">
+            <h3>KSA Projects</h3>
+            <div class="carousel-container">
+              <span class="prev">&#10094;</span>
+              <span class="next">&#10095;</span>
+              <div class="carousel-track" data-project="KSA">
+                <!-- Images will be dynamically loaded here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- مشروع 2 -->
+          <div class="project-card">
+            <h3>Porto Cruise Alamein</h3>
+            <div class="carousel-container">
+              <span class="prev">&#10094;</span>
+              <span class="next">&#10095;</span>
+              <div class="carousel-track" data-project="cruse">
+                <!-- Images will be dynamically loaded here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- مشروع 3 -->
+          <div class="project-card">
+            <h3>Ship Al-Alamein</h3>
+            <div class="carousel-container">
+              <span class="prev">&#10094;</span>
+              <span class="next">&#10095;</span>
+              <div class="carousel-track" data-project="Ship">
+                <!-- Images will be dynamically loaded here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- مشروع 4 -->
+          <div class="project-card">
+            <h3>Various Projects</h3>
+            <div class="carousel-container">
+              <span class="prev">&#10094;</span>
+              <span class="next">&#10095;</span>
+              <div class="carousel-track" data-project="varios">
+                <!-- Images will be dynamically loaded here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- V -->
+          <div class="project-card">
+            <h3>Excel Automation</h3>
+            <div class="carousel-container">
+              <span class="prev">&#10094;</span>
+              <span class="next">&#10095;</span>
+              <div class="carousel-track" data-project="excell">
+                <!-- Images will be dynamically loaded here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <button class="lightbox-nav lightbox-prev">&#10094;</button>
+    <button class="lightbox-nav lightbox-next">&#10095;</button>
+    <img class="lightbox-content" src="" />
+  </div>
+
+  <script src="main.js"></script>
+  <script src="likes.js"></script>
+</body>
+
+</html>
