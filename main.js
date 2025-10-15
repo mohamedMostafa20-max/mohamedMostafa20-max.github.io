@@ -263,3 +263,72 @@ function handleSwipe() {
     else showPreviousImage();
   }
 }
+
+  function updateClock() {
+    const clock = document.getElementById("clock");
+    const now = new Date();
+
+    const day = now.toLocaleDateString("en-GB", { weekday: "short" });
+    const date = now.toLocaleDateString("en-GB");
+    const time = now.toLocaleTimeString("en-GB");
+
+    clock.textContent = `${day} | ${date} | ${time}`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
+  const skills = document.querySelectorAll('.skills li');
+
+const animateSkill = (skill, index) => {
+  const fromLeft = index % 2 === 0;
+
+  // لف العنصر داخل wrapper لو مش موجود
+  if (!skill.parentElement.classList.contains('skill-wrapper')) {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('skill-wrapper');
+    skill.parentNode.insertBefore(wrapper, skill);
+    wrapper.appendChild(skill);
+  }
+
+  const wrapper = skill.parentElement;
+
+  wrapper.style.opacity = '0';
+  wrapper.style.transform = `translateX(${fromLeft ? '-200px' : '200px'})`;
+  wrapper.style.transition = 'all 1s ease';
+};
+
+const showSkill = (skill) => {
+  const wrapper = skill.parentElement;
+  wrapper.style.opacity = '1';
+  wrapper.style.transform = 'translateX(0)';
+};
+
+// إعداد الانيميشن المبدئي لكل المهارات
+skills.forEach((skill, index) => {
+  animateSkill(skill, index);
+});
+
+// إعداد الـ Intersection Observer
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const skill = entry.target.querySelector('li') || entry.target; 
+      const index = Array.from(skills).indexOf(skill);
+
+      if (entry.isIntersecting) {
+        // لما العنصر يدخل الشاشة
+        setTimeout(() => showSkill(skill), index * 150);
+      } else {
+        // لما يخرج العنصر من الشاشة، رجّعه لمكانه الأولي
+        animateSkill(skill, index);
+      }
+    });
+  },
+  {
+    threshold: 0.1, // يظهر لو 10% من العنصر دخل الشاشة
+  }
+);
+
+// مراقبة كل الـ wrappers
+document.querySelectorAll('.skill-wrapper').forEach(wrapper => observer.observe(wrapper));
+

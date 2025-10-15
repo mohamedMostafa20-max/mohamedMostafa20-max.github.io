@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio - Mohamed Mostafa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Slab:wght@400;700&display=swap"
     rel="stylesheet" />
@@ -14,13 +17,31 @@
 <body>
   <div class="wrapper">
     <div class="left-column">
+      <div class="custom-box"></div>
       <div class="profile-stack">
         <img src="profile.jpg" alt="Profile" />
+        <div class="copyright">© Mohamed. All Rights Reserved</div>
+        <div class="location">Mohamed.M | Cairo, Egypt</div>
+        
       </div>
       <div class="typing-container">
         <h1 id="typing-name"></h1>
         <p id="typing-title"></p>
       </div>
+      <div><!-- أيقونات التواصل -->
+<ul class="social-icons">
+  <li><a href="https://wa.me/201140949980" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+  <li><a href="https://www.linkedin.com/in/mohamed-mustafa-abdel-hamid-089205258/" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+  <li><a href="https://www.facebook.com/share/16X4nNWUbW/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+  <li><a href="mailto:engineer422002@gmail.com" target="_blank" class="email"><i class="fas fa-envelope"></i></a></li>
+</ul>
+<div class="hire-time">
+  <a href="#contact" class="hire-btn">Hire Me</a>
+  <div class="clock" id="clock"></div>
+</div>
+
+
+</div>
     </div>
 
     <div class="right-column">
@@ -37,7 +58,8 @@
           <li>SAP</li>
           <li>AutoCAD</li>
           <li>Idea Statica</li>
-          <li>Hilti & Spit</li>
+          <li>Spit</li>
+          <li>Hilti</li>
           <li>bluebeam revu</li>
           <li>STAAD Pro</li>
           <li>Revit Structural</li>
@@ -51,14 +73,8 @@
         </ul>
       </section>
 
-      <section class="contact">
-        <h2>Contact</h2>
-        <p>Phone: 01140949980</p>
-        <p>
-          <a href="https://wa.me/201140949980" target="_blank">WhatsApp</a> -
-          <a href="https://www.linkedin.com/in/mohamedmostafa20/" target="_blank">LinkedIn</a>
-        </p>
-      </section>
+  
+
 
       <section class="projects">
         <h2>Projects</h2>
@@ -124,6 +140,27 @@
           </div>
         </div>
       </section>
+        <section class="contact" id="contact">
+  <h2>Let's Work Together!</h2>
+  <p>You can reach me directly or send me a quick message below</p>
+  <p>👇</p>
+
+  <div class="contact-row">
+    <form action="https://formspree.io/f/mqaywygd" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Your Message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="home-icon" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      <i class="fas fa-home"></i>
+      <span class="home-text">Home</span> <!-- الكلمة تحت الايقونة -->
+    </div>
+  </div>
+</section>
+
+
     </div>
   </div>
 
@@ -136,6 +173,7 @@
 
   <script src="main.js"></script>
   <script src="likes.js"></script>
+  
 </body>
 
 </html>
