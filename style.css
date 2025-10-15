@@ -598,10 +598,9 @@ html {
 }
 
 .home-icon {
-  width: 250px;
-  height: 250px;
-  margin-left: -100%;
-  border-radius: 50%;
+  width: 30%;
+  height: 40%;
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
