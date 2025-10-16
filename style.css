@@ -149,8 +149,14 @@ section h2 {
 .about-me p {
   font-size: 1.3rem;
   line-height: 1.9;
-  border: #ddd solid 2px; /* إضافة حافة بيضاء عند المرور */
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+border-radius: 12px;
+
 }
+
 
 /* ====== Skills ====== */
 .skills ul {
@@ -161,6 +167,7 @@ section h2 {
   gap: 40px;
   margin-top: 20px;
   padding: 0;
+  
 }
 
 .skills li {
@@ -179,14 +186,13 @@ align-items: center;
   font-weight: 600;
   font-size: 1rem;
   text-align: center;
-  transition: box-shadow 0.6s ease, border 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.6s ease, border 0.3s ease;
 }
 
 .skills li:hover {
   background: #f0c674;   /* الخلفية تتحول للون النص الأصلي */
   color: #2c3e50;        /* النص ياخد لون الخلفية القديم */
   transform: scale(1.5); /* تكبير العنصر شوي */
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 
@@ -226,9 +232,10 @@ align-items: center;
 .project-card h3 {
   color: #f0c674;
   font-weight: 700;
-  border: #ddd solid 2px; /* إضافة حافة بيضاء عند المرور */
   font-size: 1.2rem;
   margin-bottom: 25px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 /* ====== Carousel ====== */
@@ -385,17 +392,20 @@ align-items: center;
 }
 /* ====== Left Column Social Icons ====== */
 .social-icons {
-  list-style: none;
   display: flex;
+  justify-content: center; /* يخليهم في نص السطر أفقياً */
+  align-items: center;     /* يخليهم في نص السطر رأسياً */
+  list-style: none;
   gap: 30px;
   padding: 0;
   margin-top: -20px;
 }
 
+
 .social-icons li a {
   display: inline-block;
-  font-size: 50px;
-  padding: 10px;
+  font-size: 30px;
+  padding: 15px;
   border-radius: 50%;
   color: #fff;
   transition: transform 0.3s ease, color 0.3s ease;
@@ -425,7 +435,7 @@ align-items: center;
 .profile-stack .location {
   position: absolute;
   bottom: 270px;
-  left: 7%;
+  left: 27.5%;
   transform: translateX(-3%);
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
@@ -543,6 +553,7 @@ html {
 /* تعزيز ظهور الفورم على الخلفية الداكنة */
 .contact-form input,
 .contact-form textarea {
+  
   color: #ffffff !important;               /* نص أبيض قوي */
   background-color: rgba(255, 255, 255, 0.05) !important; /* خلفية شبه شفافة فاتحة */
   border: 2px solid #00a1ff !important;    /* حدود زرقاء قوية تبرز العنصر */
@@ -557,29 +568,34 @@ html {
 
 .contact-row {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* تخلي العناصر تحت بعض بدل جنب بعض */
   align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  margin-top: 20px;
+  justify-content: center;
+  width: 100%;
 }
 
 .contact-form {
+  width: 100%; /* تخليها تاخد عرض الصفحة كله */
+  max-width: 700px; /* اختياري.. عشان الشكل ما يوسعش أوي على الشاشات الكبيرة */
   display: flex;
   flex-direction: column;
   gap: 15px;
-  flex: 1; /* ياخد كل المساحة الممكنة للعمود */
 }
 
 .contact-form input,
 .contact-form textarea {
+  width: 100%; /* كل خانة تاخد العرض كله */
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #00a1ff;
   border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
   font-size: 14px;
+  box-shadow: 0 0 15px rgba(0, 161, 255, 0.5);
 }
 
 .contact-form button {
+  width: 100%; /* الزرار كمان ياخد العرض كله */
   background-color: #25D366;
   color: #fff;
   border: 2px solid #25D366;
@@ -593,52 +609,125 @@ html {
 .contact-form button:hover {
   background-color: #a6293b;
   border-color: #a6293b;
-  color: white;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
+/* ====== Responsive Design for Mobile ====== */
+@media (max-width: 768px) {
 
-.home-icon {
-  width: 30%;
-  height: 40%;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
+  /* ====== Wrapper ====== */
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
+  }
+
+  /* ====== Left Column ====== */
+  
+  .left-column {
+    margin-top: -20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px 0;
+    gap: 10px;
+      transform: scale(.8); /* كبر بنسبة 10% */
+
+  }
+
+  .left-column > * {
+    width: 95%;
+    text-align: center;
+  }
+  .custom-box {
+  width: 95%;
+  height: 98%;
+  top: 44%;
   align-items: center;
-  background: linear-gradient(270deg, #25D366, #00d1b2, #25D366);
-  background-size: 600% 600%;
-  animation: gradientShift 4s ease infinite;
-  cursor: pointer;
-  flex-shrink: 0; /* يخليها ما تصغرش */
+}
+  
+
+  /* ====== Right Column ====== */
+  .right-column {
+    margin-top: -10%;
+    width: 100%;
+    text-align: center;
+    padding: 0 15px;
+    
+  }
+  .left-column > * {
+    margin-top: 10%;
+    width: 95%;
+    text-align: center;
+  }
+
+  .about-me p {
+    font-size: .8rem;
+    line-height: 1.5;
+  }
+
+  .skills h2,
+  .projects h2,
+  .contact h2 {
+    font-size: 1.4rem;
+  }
+
+  .skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .skills li {
+    width: 70px;
+    height: 70px;
+    font-size: 0.8rem;
+    margin: 10px;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .project-card {
+    margin-bottom: 20px;
+  }
+
+
+  /* ====== Contact Section ====== */
+  .contact p {
+    font-size: 1rem;
+  }
+  .contact-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .contact-form button {
+    width: 100%;
+    font-size: 1rem;
+  }
+.project-description {
+  font-size: 0.7rem !important;
+  line-height: 1.5;
+  color: #ddd;
 }
 
-.home-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 8.5rem;
-  color: #f5f5f5;
-}
-
-.home-text {
-  display: flex;
-  flex-direction: column; /* حرف حرف تحت بعض */
-  align-items: center;
-  margin-top: 5px;
-  font-size: 2.2rem;
-  font-weight: 600;
-}
-
-.home-icon:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-}
-/* تأثير الـ gradient الحي */
-@keyframes gradientShift {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
 }
 
 
