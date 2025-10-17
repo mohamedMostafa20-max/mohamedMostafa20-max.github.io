@@ -54,7 +54,7 @@ async function loadProjectImages(projectName, track) {
   const images = [];
   let i = 1;
   let consecutiveNotFound = 0;
-  const maxConsecutiveNotFound = 20;
+  const maxConsecutiveNotFound = 10;
 
   while (consecutiveNotFound < maxConsecutiveNotFound) {
     const imagePath = `images/${projectName}${i}.jpg`;
@@ -306,6 +306,7 @@ const showSkill = (skill) => {
 // إعداد الانيميشن المبدئي لكل المهارات
 skills.forEach((skill, index) => {
   animateSkill(skill, index);
+  
 });
 
 // إعداد الـ Intersection Observer
@@ -328,6 +329,7 @@ const observer = new IntersectionObserver(
     threshold: 0.1, // يظهر لو 10% من العنصر دخل الشاشة
   }
 );
+skills.forEach(skill => observer.observe(skill));
 
 // مراقبة كل الـ wrappers
 document.querySelectorAll('.skill-wrapper').forEach(wrapper => observer.observe(wrapper));
