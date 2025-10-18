@@ -5,6 +5,7 @@ const projectDescriptions = [
   " Wait Me Soon.",
   "Structural design and modeling of several steel projects, including warehouses, hangars, and architectural frames. All designs were developed from scratch according to American and Egyptian codes, ensuring strength, stability, and safety.",
   "Development of customized Excel sheets for structural analysis, load calculations, and steel design automation, enhancing accuracy, speed, and overall design efficiency.",
+  "A detailed project notebook where all my calculations, thoughts, and engineering notes are carefully documented.",
 ];
 
 // اختر كل البوكسات الخاصة بالمشاريع

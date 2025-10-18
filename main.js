@@ -230,25 +230,64 @@ document.addEventListener(
 );
 
 // Touch swipe navigation
-let touchStartY = 0;
-let touchEndY = 0;
+// ================================================
+// ✅ تحسين دعم اللمس (Swipe + Zoom)
+// ================================================
+let touchStartX = 0;
+let touchEndX = 0;
+let initialDistance = 0;
+let currentScale = 1;
 
 lightbox.addEventListener(
   "touchstart",
   (e) => {
     if (lightbox.style.display === "flex") {
-      touchStartY = e.changedTouches[0].screenY;
+      // لو لمسة واحدة = بداية السحب
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+      }
+      // لو لمستين = بداية الزووم
+      else if (e.touches.length === 2) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        initialDistance = Math.sqrt(dx * dx + dy * dy);
+      }
     }
   },
   { passive: true }
 );
 
 lightbox.addEventListener(
+  "touchmove",
+  (e) => {
+    if (lightbox.style.display === "flex" && e.touches.length === 2) {
+      e.preventDefault();
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const newDistance = Math.sqrt(dx * dx + dy * dy);
+      const scale = newDistance / initialDistance;
+      currentScale = Math.min(Math.max(scale, 1), 3); // من 1 لحد 3 تكبير
+      lightboxContent.style.transform = `scale(${currentScale})`;
+    }
+  },
+  { passive: false }
+);
+
+lightbox.addEventListener(
   "touchend",
   (e) => {
     if (lightbox.style.display === "flex") {
-      touchEndY = e.changedTouches[0].screenY;
-      handleSwipe();
+      if (e.changedTouches.length === 1) {
+        touchEndX = e.changedTouches[0].clientX;
+        handleSwipe();
+      }
+      // رجّع الصورة لحجمها الطبيعي بعد الزووم لما تسيب
+      if (currentScale !== 1 && e.touches.length === 0) {
+        lightboxContent.style.transition = "transform 0.3s ease";
+        lightboxContent.style.transform = "scale(1)";
+        currentScale = 1;
+        setTimeout(() => (lightboxContent.style.transition = ""), 300);
+      }
     }
   },
   { passive: true }
@@ -256,13 +295,14 @@ lightbox.addEventListener(
 
 function handleSwipe() {
   const swipeThreshold = 50;
-  const swipeDistance = touchStartY - touchEndY;
+  const swipeDistance = touchStartX - touchEndX;
 
   if (Math.abs(swipeDistance) > swipeThreshold) {
     if (swipeDistance > 0) showNextImage();
     else showPreviousImage();
   }
 }
+
 
   function updateClock() {
     const clock = document.getElementById("clock");
@@ -279,58 +319,41 @@ function handleSwipe() {
   updateClock();
   const skills = document.querySelectorAll('.skills li');
 
-const animateSkill = (skill, index) => {
-  const fromLeft = index % 2 === 0;
+const skillItems = document.querySelectorAll('.skills li');
 
-  // لف العنصر داخل wrapper لو مش موجود
-  if (!skill.parentElement.classList.contains('skill-wrapper')) {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('skill-wrapper');
-    skill.parentNode.insertBefore(wrapper, skill);
-    wrapper.appendChild(skill);
-  }
+skillItems.forEach((skill, index) => {
+  // الحالة المبدئية
+  skill.style.opacity = 0;
+  skill.style.transform = 'translateY(40px) scale(0.9)';
+  skill.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out, filter 0.3s ease';
 
-  const wrapper = skill.parentElement;
-
-  wrapper.style.opacity = '0';
-  wrapper.style.transform = `translateX(${fromLeft ? '-200px' : '200px'})`;
-  wrapper.style.transition = 'all 1s ease';
-};
-
-const showSkill = (skill) => {
-  const wrapper = skill.parentElement;
-  wrapper.style.opacity = '1';
-  wrapper.style.transform = 'translateX(0)';
-};
-
-// إعداد الانيميشن المبدئي لكل المهارات
-skills.forEach((skill, index) => {
-  animateSkill(skill, index);
-  
-});
-
-// إعداد الـ Intersection Observer
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      const skill = entry.target.querySelector('li') || entry.target; 
-      const index = Array.from(skills).indexOf(skill);
-
-      if (entry.isIntersecting) {
-        // لما العنصر يدخل الشاشة
-        setTimeout(() => showSkill(skill), index * 150);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        setTimeout(() => {
+          skill.style.opacity = 1;
+          skill.style.transform = 'translateY(0) scale(1)';
+          skill.style.filter = 'drop-shadow(0 0 6px rgba(0,0,0,0.15))';
+        }, index * 200);
       } else {
-        // لما يخرج العنصر من الشاشة، رجّعه لمكانه الأولي
-        animateSkill(skill, index);
+        skill.style.opacity = 0;
+        skill.style.transform = 'translateY(40px) scale(0.9)';
+        skill.style.filter = 'none';
       }
     });
-  },
-  {
-    threshold: 0.1, // يظهر لو 10% من العنصر دخل الشاشة
-  }
-);
-skills.forEach(skill => observer.observe(skill));
+  }, { threshold: 0.4 });
 
-// مراقبة كل الـ wrappers
-document.querySelectorAll('.skill-wrapper').forEach(wrapper => observer.observe(wrapper));
+  observer.observe(skill);
+});
+
+// الهوفر هنا شغال من CSS عادي ومش بيتعارض مع الأنيميشن
+// مثال:
+document.querySelectorAll('.skills li').forEach(li => {
+  li.addEventListener('mouseenter', () => {
+    li.style.transform = 'scale(1.05) translateY(-5px)';
+  });
+  li.addEventListener('mouseleave', () => {
+    li.style.transform = 'scale(1) translateY(0)';
+  });
+});
 

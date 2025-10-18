@@ -85,13 +85,15 @@ h1, h2, h3 {
 }
 
 .typing-container h1 {
-  font-size: 2.3rem;
+
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.1rem;
   margin: 0;
   line-height: 1.2;
 }
 
 .typing-container p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #f0c674;
   font-weight: 700;
   margin: 4px 0 0 0; /* مسافة بسيطة جدًا */
@@ -729,6 +731,25 @@ html {
 }
 
 }
+.lightbox-prev,
+.lightbox-next {
+  display: none !important;
+}
+.download-btn {
+  display: inline-block;   /* يخلي الخلفية حوالين النص بس */
+  margin-top: 3px;        /* المسافة بين العنوان والزر */
+  padding: 5px 10px;       /* حشوة صغيرة للزر */
+  text-align: center;      
+  background-color: #3498db; /* مثال للون */
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  background-color: #0056b3; /* أزرق أغمق عند المرور */
+}
+
 
 
 
