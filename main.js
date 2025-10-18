@@ -238,16 +238,16 @@ let touchEndX = 0;
 let initialDistance = 0;
 let currentScale = 1;
 
+let startX = 0;
+
 lightbox.addEventListener(
   "touchstart",
   (e) => {
     if (lightbox.style.display === "flex") {
-      // لو لمسة واحدة = بداية السحب
-      if (e.touches.length === 1) {
+      if (e.touches.length === 1 && currentScale === 1) {
+        startX = e.touches[0].clientX;
         touchStartX = e.touches[0].clientX;
-      }
-      // لو لمستين = بداية الزووم
-      else if (e.touches.length === 2) {
+      } else if (e.touches.length === 2) {
         const dx = e.touches[0].clientX - e.touches[1].clientX;
         const dy = e.touches[0].clientY - e.touches[1].clientY;
         initialDistance = Math.sqrt(dx * dx + dy * dy);
@@ -260,14 +260,23 @@ lightbox.addEventListener(
 lightbox.addEventListener(
   "touchmove",
   (e) => {
-    if (lightbox.style.display === "flex" && e.touches.length === 2) {
+    if (lightbox.style.display === "flex") {
       e.preventDefault();
-      const dx = e.touches[0].clientX - e.touches[1].clientX;
-      const dy = e.touches[0].clientY - e.touches[1].clientY;
-      const newDistance = Math.sqrt(dx * dx + dy * dy);
-      const scale = newDistance / initialDistance;
-      currentScale = Math.min(Math.max(scale, 1), 3); // من 1 لحد 3 تكبير
-      lightboxContent.style.transform = `scale(${currentScale})`;
+
+      // السحب قبل الزووم فقط
+      if (e.touches.length === 1 && currentScale === 1) {
+        const deltaX = e.touches[0].clientX - startX;
+        lightboxContent.style.transform = `translateX(${deltaX}px) scale(1)`;
+      }
+
+      // زووم باللمستين
+      else if (e.touches.length === 2) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const newDistance = Math.sqrt(dx * dx + dy * dy);
+        currentScale = Math.min(Math.max(newDistance / initialDistance, 1), 3);
+        lightboxContent.style.transform = `scale(${currentScale})`;
+      }
     }
   },
   { passive: false }
@@ -277,17 +286,15 @@ lightbox.addEventListener(
   "touchend",
   (e) => {
     if (lightbox.style.display === "flex") {
-      if (e.changedTouches.length === 1) {
+      // سوايب بين الصور فقط لو scale = 1
+      if (e.changedTouches.length === 1 && currentScale === 1) {
         touchEndX = e.changedTouches[0].clientX;
         handleSwipe();
       }
-      // رجّع الصورة لحجمها الطبيعي بعد الزووم لما تسيب
-      if (currentScale !== 1 && e.touches.length === 0) {
-        lightboxContent.style.transition = "transform 0.3s ease";
-        lightboxContent.style.transform = "scale(1)";
-        currentScale = 1;
-        setTimeout(() => (lightboxContent.style.transition = ""), 300);
-      }
+      // رجّع translate بعد السحب للصفحة الأصلية
+      lightboxContent.style.transition = "transform 0.2s ease";
+      lightboxContent.style.transform = `scale(${currentScale})`;
+      setTimeout(() => (lightboxContent.style.transition = ""), 200);
     }
   },
   { passive: true }
@@ -302,6 +309,7 @@ function handleSwipe() {
     else showPreviousImage();
   }
 }
+
 
 
   function updateClock() {
