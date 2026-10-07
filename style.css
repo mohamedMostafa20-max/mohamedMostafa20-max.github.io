@@ -1489,3 +1489,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .fab-quote span { display: none; }
   .fab-quote .ic { width: 26px; height: 26px; }
 }
+@media (max-width: 640px) {
+  .dims { gap: 10px; }
+  .dim-num { font-size: clamp(26px, 8.2vw, 36px); font-stretch: 100%; white-space: nowrap; }
+}
