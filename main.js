@@ -18,6 +18,14 @@ function setLang(lang) {
   const ar = lang === "ar";
   document.documentElement.lang = ar ? "ar" : "en";
   try { localStorage.setItem("mm-lang", ar ? "ar" : "en"); } catch (e) {}
+  // carry the language in every internal page link, so the next page opens in the same language
+  document.querySelectorAll('a[href]').forEach((link) => {
+    const h = link.getAttribute("href");
+    if (!/^(index|about|projects|expertise|contact)\.html/.test(h)) return;
+    const [path, hash] = h.split("#");
+    const base = path.split("?")[0];
+    link.setAttribute("href", base + (ar ? "?lang=ar" : "?lang=en") + (hash ? "#" + hash : ""));
+  });
   document.documentElement.dir = ar ? "rtl" : "ltr";
 
   document.querySelectorAll("[data-ar]").forEach((el) => {
@@ -617,7 +625,7 @@ document.querySelectorAll("[data-open]").forEach((b) => {
   b.addEventListener("click", () => {
     const p = Projects.byId(b.dataset.open);
     if (p) Viewer.open(p);
-    else location.href = "projects.html#" + b.dataset.open;
+    else location.href = "projects.html?lang=" + (isArabic() ? "ar" : "en") + "#" + b.dataset.open;
   });
 });
 
