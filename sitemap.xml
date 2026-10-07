@@ -108,4 +108,18 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/contact.html"/>
   </url>
+  <url>
+    <loc>https://mohamedmostafa20-max.github.io/resources.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/resources.html"/>
+  </url>
+  <url>
+    <loc>https://mohamedmostafa20-max.github.io/ar/resources.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/resources.html"/>
+  </url>
 </urlset>

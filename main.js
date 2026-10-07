@@ -897,3 +897,23 @@ if (location.hash.startsWith("#project-")) {
   const p = Projects.byId(location.hash.slice(1));
   if (p) setTimeout(() => Viewer.open(p), 300);
 }
+
+// ---------------------------------------------------------------------
+// Free resources: filter by kind (Excel / SAP2000 / IDEA); hide kinds with no files yet
+// ---------------------------------------------------------------------
+(() => {
+  const bar = document.getElementById("kind-bar");
+  const list = document.getElementById("tool-list");
+  if (!bar || !list) return;
+  const cards = [...list.querySelectorAll(".tool-card")];
+  const btns = [...bar.querySelectorAll(".kind")];
+  btns.forEach((b) => {
+    const n = b.dataset.kind === "all" ? cards.length : cards.filter((c) => c.dataset.kind === b.dataset.kind).length;
+    if (!n) b.hidden = true;
+    b.insertAdjacentHTML("beforeend", ` <b class="fcount">${n}</b>`);
+    b.addEventListener("click", () => {
+      btns.forEach((x) => x.classList.toggle("active", x === b));
+      cards.forEach((c) => (c.hidden = !(b.dataset.kind === "all" || c.dataset.kind === b.dataset.kind)));
+    });
+  });
+})();
