@@ -6,7 +6,7 @@
     <loc>https://mohamedmostafa20-max.github.io/</loc>
     <lastmod>2026-10-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/"/>
     <image:image><image:loc>https://mohamedmostafa20-max.github.io/images/mohamed-mustafa.jpg</image:loc></image:image>
     <image:image><image:loc>https://mohamedmostafa20-max.github.io/images/mohamed-mustafa-steel-structures-design-engineer.webp</image:loc></image:image>
@@ -42,13 +42,6 @@
     <image:image><image:loc>https://mohamedmostafa20-max.github.io/images/full/steel-design-excel-sheet-1.webp</image:loc></image:image>
   </url>
   <url>
-    <loc>https://mohamedmostafa20-max.github.io/?lang=ar</loc>
-    <lastmod>2026-10-07</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/?lang=ar"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/"/>
-  </url>
-  <url>
     <loc>https://mohamedmostafa20-max.github.io/Mohamed_Mustafa_CV.pdf</loc>
     <lastmod>2026-10-07</lastmod>
   </url>
@@ -56,28 +49,63 @@
     <loc>https://mohamedmostafa20-max.github.io/projects.html</loc>
     <lastmod>2026-10-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/projects.html"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/projects.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/projects.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/projects.html"/>
   </url>
   <url>
     <loc>https://mohamedmostafa20-max.github.io/about.html</loc>
     <lastmod>2026-10-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/about.html"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/about.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/about.html"/>
   </url>
   <url>
     <loc>https://mohamedmostafa20-max.github.io/expertise.html</loc>
     <lastmod>2026-10-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/expertise.html"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/expertise.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/expertise.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/expertise.html"/>
   </url>
   <url>
     <loc>https://mohamedmostafa20-max.github.io/contact.html</loc>
     <lastmod>2026-10-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/contact.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/contact.html"/>
+  </url>
+  <url>
+    <loc>https://mohamedmostafa20-max.github.io/ar/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/"/>
+  </url>
+  <url>
+    <loc>https://mohamedmostafa20-max.github.io/ar/projects.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/projects.html"/>
+  </url>
+  <url>
+    <loc>https://mohamedmostafa20-max.github.io/ar/about.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/about.html"/>
+  </url>
+  <url>
+    <loc>https://mohamedmostafa20-max.github.io/ar/expertise.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/expertise.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/expertise.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/expertise.html"/>
+  </url>
+  <url>
+    <loc>https://mohamedmostafa20-max.github.io/ar/contact.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/ar/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/contact.html"/>
   </url>
 </urlset>

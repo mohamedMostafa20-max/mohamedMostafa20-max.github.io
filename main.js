@@ -17,14 +17,6 @@ const langHooks = [];
 function setLang(lang) {
   const ar = lang === "ar";
   document.documentElement.lang = ar ? "ar" : "en";
-  // carry the language in every internal page link, so the next page opens in the same language
-  document.querySelectorAll('a[href]').forEach((link) => {
-    const h = link.getAttribute("href");
-    if (!/^(index|about|projects|expertise|contact)\.html/.test(h)) return;
-    const [path, hash] = h.split("#");
-    const base = path.split("?")[0];
-    link.setAttribute("href", base + (ar ? "?lang=ar" : "?lang=en") + (hash ? "#" + hash : ""));
-  });
   document.documentElement.dir = ar ? "rtl" : "ltr";
 
   document.querySelectorAll("[data-ar]").forEach((el) => {
@@ -38,42 +30,13 @@ function setLang(lang) {
 
   langHooks.forEach((fn) => fn(ar));
 }
-// title, description and canonical link per language (so Google indexes both versions)
-const META = {
-  en: {
-    title: document.title,
-    desc: document.querySelector('meta[name="description"]').content,
-  },
-  ar: {
-    title: ({ "projects.html": "المشاريع | ", "about.html": "نبذة | ", "expertise.html": "الخبرة | ", "contact.html": "تواصل | " }[(location.pathname.split("/").pop() || "")] || "") + "محمد مصطفى | مهندس إنشائي لتصميم المنشآت المعدنية في مصر",
-    desc: "محمد مصطفى، مهندس مدني وإنشائي متخصص في تصميم المنشآت المعدنية في 6 أكتوبر، الجيزة، مصر. تصميم هناجر ومخازن ومصانع معدنية، ومظلات محطات الوقود، وجمالونات، وخزانات API 650، ووصلات معدنية، لأكثر من 200 مشروع في مصر والسعودية والإمارات.",
-  },
-};
-const SITE = "https://mohamedmostafa20-max.github.io/";
-const PAGE = (location.pathname.split("/").pop() || "").replace(/^index\.html$/, "");
-let canonical = document.querySelector('link[rel="canonical"]');
-if (!canonical) {
-  canonical = document.createElement("link");
-  canonical.rel = "canonical";
-  document.head.appendChild(canonical);
-}
-langHooks.push((ar) => {
-  const m = ar ? META.ar : META.en;
-  document.title = m.title;
-  document.querySelector('meta[name="description"]').content = m.desc;
-  canonical.href = SITE + PAGE + (ar ? "?lang=ar" : "");
-});
-
+// Two static versions: English pages at the root, Arabic pages in /ar/ (both indexed by Google).
+const IN_AR = /\/ar\//.test(location.pathname);
+const ROOT = IN_AR ? "../" : "";
 document.getElementById("lang-toggle").addEventListener("click", () => {
-  const ar = !isArabic();
-  setLang(ar ? "ar" : "en");
-  // keep the address in step with the language, so a shared link opens the same language
-  const url = new URL(location.href);
-  url.searchParams.set("lang", ar ? "ar" : "en");
-  history.replaceState(null, "", url.pathname + url.search + url.hash);
+  const page = location.pathname.split("/").pop() || "index.html";
+  location.href = (IN_AR ? "../" : "ar/") + page + location.hash;
 });
-canonical.href = SITE + PAGE;
-// the site opens in English; ?lang=ar opens the Arabic version (this is the address Google indexes for Arabic)
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -538,7 +501,7 @@ const Projects = (() => {
 
     const names = p.dataset.images.split(/\s+/).filter(Boolean);
     const img = document.createElement("img");
-    img.src = `images/thumb/${names[0]}.webp`;
+    img.src = `${ROOT}images/thumb/${names[0]}.webp`;
     const loc = p.querySelector(".meta-loc");
     const altText = () => {
       const t = title.textContent.trim();
@@ -623,7 +586,7 @@ document.querySelectorAll("[data-open]").forEach((b) => {
   b.addEventListener("click", () => {
     const p = Projects.byId(b.dataset.open);
     if (p) Viewer.open(p);
-    else location.href = "projects.html?lang=" + (isArabic() ? "ar" : "en") + "#" + b.dataset.open;
+    else location.href = "projects.html#" + b.dataset.open;
   });
 });
 
@@ -681,7 +644,7 @@ const Viewer = (() => {
       const b = document.createElement("button");
       b.type = "button";
       b.setAttribute("aria-label", `${i + 1} / ${names.length}`);
-      b.innerHTML = `<img src="images/thumb/${n}.webp" alt="" loading="lazy">`;
+      b.innerHTML = `<img src="${ROOT}images/thumb/${n}.webp" alt="" loading="lazy">`;
       b.addEventListener("click", () => show(i));
       thumbs.appendChild(b);
     });
@@ -691,9 +654,9 @@ const Viewer = (() => {
     ii = i;
     resetZoom(false);
     const n = names[ii];
-    const full = `images/full/${n}.webp`;
+    const full = `${ROOT}images/full/${n}.webp`;
     img.classList.add("loading");
-    img.src = `images/thumb/${n}.webp`;
+    img.src = `${ROOT}images/thumb/${n}.webp`;
     img.alt = `${title.textContent} (${ii + 1} / ${names.length})`;
     img.style.animation = "none"; void img.offsetWidth; img.style.animation = "";
     const hi = new Image();
@@ -705,7 +668,7 @@ const Viewer = (() => {
     next.disabled = ii === names.length - 1;
     [...thumbs.children].forEach((b, k) => b.classList.toggle("active", k === ii));
     thumbs.children[ii]?.scrollIntoView({ block: "nearest", inline: "nearest" });
-    [ii - 1, ii + 1].forEach((k) => { if (names[k]) new Image().src = `images/full/${names[k]}.webp`; });
+    [ii - 1, ii + 1].forEach((k) => { if (names[k]) new Image().src = `${ROOT}images/full/${names[k]}.webp`; });
   }
 
   function load(index) {
@@ -924,21 +887,7 @@ const Viewer = (() => {
     .catch(() => owner && show("—"));
 })();
 
-// ---------------------------------------------------------------------
-// Open the Arabic version when the address has ?lang=ar
-// ---------------------------------------------------------------------
-{
-  // the site always opens in English; Arabic is kept only while moving between its own pages
-  const q = new URLSearchParams(location.search).get("lang");
-  let internal = false;
-  try { internal = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
-  const want = internal && q === "ar" ? "ar" : "en";
-  if (want === "ar") setLang("ar");
-  else if (q === "ar") {
-    // opened from outside with ?lang=ar: show English and clean the address
-    history.replaceState(null, "", location.pathname + location.hash);
-  }
-}
+if (IN_AR) setLang("ar");
 // open a project directly from a link like projects.html#project-park
 if (location.hash.startsWith("#project-")) {
   const p = Projects.byId(location.hash.slice(1));
