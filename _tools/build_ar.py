@@ -17,13 +17,20 @@ PAGES = {
     "contact.html": ("تواصل واطلب تسعير تصميم منشأ معدني | محمد مصطفى",
                      "تواصل مع م. محمد مصطفى لطلب تسعير تصميم إنشائي لمنشأ معدني: واتساب أو إيميل أو ابعت الرسومات المعمارية."),
 }
-ASSET = re.compile(r'^(images/|style\.css|main\.js|favicon\.ico|Mohamed_Mustafa_CV\.pdf)')
+ASSET = re.compile(r'^(images/|tools/|style\.css|main\.js|favicon\.ico|Mohamed_Mustafa_CV\.pdf)')
 
 os.makedirs(os.path.join(ROOT, "ar"), exist_ok=True)
 for page, (title, desc) in PAGES.items():
     soup = BeautifulSoup(open(os.path.join(ROOT, page), encoding="utf-8").read(), "html.parser")
     soup.html["lang"] = "ar"
     soup.html["dir"] = "rtl"
+    # Arabic alt text for the project images (Google Images in Arabic)
+    for art in soup.select("article.project"):
+        im, h3 = art.find("img", class_="p-thumb"), art.find("h3")
+        if im and h3 and h3.get("data-ar"):
+            loc = art.find(class_="meta-loc")
+            where = BeautifulSoup(loc["data-ar"], "html.parser").get_text().strip() if loc and loc.get("data-ar") else ""
+            im["alt"] = h3["data-ar"] + ("، " + where if where else "") + "، تصميم منشآت معدنية م. محمد مصطفى"
     for el in soup.select("[data-ar]"):
         el["data-en"] = el.decode_contents()
         ar = el["data-ar"]

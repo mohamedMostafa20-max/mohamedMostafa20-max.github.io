@@ -500,8 +500,12 @@ const Projects = (() => {
     }
 
     const names = p.dataset.images.split(/\s+/).filter(Boolean);
-    const img = document.createElement("img");
-    img.src = `${ROOT}images/thumb/${names[0]}.webp`;
+    // the first image is already in the page (for Google Images); create it only if missing
+    let img = p.querySelector("img.p-thumb");
+    if (!img) {
+      img = document.createElement("img");
+      img.src = `${ROOT}images/thumb/${names[0]}.webp`;
+    }
     const loc = p.querySelector(".meta-loc");
     const altText = () => {
       const t = title.textContent.trim();

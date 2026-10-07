@@ -1414,3 +1414,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .featured { padding-bottom: clamp(60px, 8vw, 110px); }
 .nav .nav-home { display: inline-flex; align-items: center; gap: 6px; }
 .nav .nav-home .ic { width: 15px; height: 15px; fill: currentColor; }
+
+/* ===================== Free tools ===================== */
+.tool-card { display: grid; grid-template-columns: 1fr auto; gap: 18px 28px; align-items: center; padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--rule-strong); border-radius: 18px; background: var(--ink-3); }
+.tool-card h3 { margin: 0 0 10px; font-size: clamp(18px, 2vw, 23px); color: var(--text); }
+.tool-card p { margin: 0; color: var(--muted); line-height: 1.75; }
+.tool-tags { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tool-tags li { padding: 4px 10px; border: 1px solid var(--rule); border-radius: 999px; font-size: 13px; color: var(--gold); }
+.tool-actions { display: flex; flex-direction: column; gap: 10px; }
+.tool-actions .btn { justify-content: center; }
+.tool-note { grid-column: 1 / -1; font-size: 13px !important; }
+@media (max-width: 800px) { .tool-card { grid-template-columns: 1fr; } }
+.tools { padding-bottom: clamp(60px, 8vw, 110px); }
