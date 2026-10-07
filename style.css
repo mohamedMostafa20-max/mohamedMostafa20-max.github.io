@@ -1403,3 +1403,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .section { padding-top: 64px; }
   .see-all .btn { width: 100%; justify-content: center; }
 }
+/* "All projects" link in the featured header (replaces the old button under the grid) */
+.featured .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.link-all { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1.5px solid var(--gold);
+  border-radius: 999px; color: var(--gold); font-weight: 700; font-size: 15px; text-decoration: none; margin-bottom: 14px;
+  transition: background 0.3s, color 0.3s; }
+.link-all .ic { width: 12px; height: 12px; fill: currentColor; }
+[dir="rtl"] .link-all .ic { transform: scaleX(-1); }
+.link-all:hover { background: var(--gold); color: var(--ink); }
+.featured { padding-bottom: clamp(60px, 8vw, 110px); }
