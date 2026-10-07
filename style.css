@@ -1460,3 +1460,23 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .b3d { height: 300px; }
 .b3d-rot { top: 48%; }
 @media (max-width: 800px) { .b3d { width: 260px; height: 310px; } }
+
+/* ===================== Mobile: bottom tab bar instead of the ☰ menu ===================== */
+.tabbar { display: none; }
+@media (max-width: 900px) {
+  .menu-btn { display: none !important; }
+  .tabbar { display: grid; grid-template-columns: repeat(6, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px)); background: rgba(11, 21, 34, 0.96);
+    border-top: 1px solid var(--rule-strong); backdrop-filter: blur(10px); }
+  .tabbar a { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 4px 0; color: var(--muted);
+    text-decoration: none; font-size: 10.5px; font-weight: 600; line-height: 1.1; text-align: center; }
+  .tabbar a .ic { width: 19px; height: 19px; fill: currentColor; }
+  .tabbar a.on { color: var(--gold); }
+  .tabbar a[href^="projects"] { color: var(--gold); }
+  .tabbar a[href^="projects"] .ic { width: 22px; height: 22px; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .fab-quote { bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important; }
+}
+@media (max-width: 900px) {
+  html:not([dir="rtl"]) .lang-toggle { left: auto; right: 16px; }
+}
