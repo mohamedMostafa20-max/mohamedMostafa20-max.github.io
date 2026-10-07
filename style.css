@@ -1396,3 +1396,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav .nav-projects { color: var(--ink); background: var(--gold); padding: 7px 14px; border-radius: 999px; font-weight: 700; }
 .nav .nav-projects:hover { background: #f6d28c; color: var(--ink); }
 .see-all { display: flex; justify-content: center; margin-top: 28px; }
+.nav a.is-active { color: var(--gold); }
+.nav .nav-projects.is-active { color: var(--ink); box-shadow: 0 0 0 2px rgba(240, 198, 116, 0.35); }
+@media (max-width: 640px) {
+  main > .section:first-child { padding-top: 84px; }
+  .section { padding-top: 64px; }
+  .see-all .btn { width: 100%; justify-content: center; }
+}

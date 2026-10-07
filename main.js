@@ -37,11 +37,12 @@ const META = {
     desc: document.querySelector('meta[name="description"]').content,
   },
   ar: {
-    title: "محمد مصطفى | مهندس إنشائي لتصميم المنشآت المعدنية في مصر",
+    title: ({ "projects.html": "المشاريع | ", "about.html": "نبذة | ", "expertise.html": "الخبرة | ", "contact.html": "تواصل | " }[(location.pathname.split("/").pop() || "")] || "") + "محمد مصطفى | مهندس إنشائي لتصميم المنشآت المعدنية في مصر",
     desc: "محمد مصطفى، مهندس مدني وإنشائي متخصص في تصميم المنشآت المعدنية في 6 أكتوبر، الجيزة، مصر. تصميم هناجر ومخازن ومصانع معدنية، ومظلات محطات الوقود، وجمالونات، وخزانات API 650، ووصلات معدنية، لأكثر من 200 مشروع في مصر والسعودية والإمارات.",
   },
 };
 const SITE = "https://mohamedmostafa20-max.github.io/";
+const PAGE = (location.pathname.split("/").pop() || "").replace(/^index\.html$/, "");
 let canonical = document.querySelector('link[rel="canonical"]');
 if (!canonical) {
   canonical = document.createElement("link");
@@ -52,8 +53,7 @@ langHooks.push((ar) => {
   const m = ar ? META.ar : META.en;
   document.title = m.title;
   document.querySelector('meta[name="description"]').content = m.desc;
-  const page = location.pathname.endsWith("projects.html") ? "projects.html" : "";
-  canonical.href = SITE + page + (ar ? "?lang=ar" : "");
+  canonical.href = SITE + PAGE + (ar ? "?lang=ar" : "");
 });
 
 document.getElementById("lang-toggle").addEventListener("click", () => {
@@ -64,7 +64,7 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
   url.searchParams.set("lang", ar ? "ar" : "en");
   history.replaceState(null, "", url.pathname + url.search + url.hash);
 });
-canonical.href = SITE + (location.pathname.endsWith("projects.html") ? "projects.html" : "");
+canonical.href = SITE + PAGE;
 // the site opens in English; ?lang=ar opens the Arabic version (this is the address Google indexes for Arabic)
 
 document.getElementById("year").textContent = new Date().getFullYear();
