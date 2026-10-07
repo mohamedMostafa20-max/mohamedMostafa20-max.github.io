@@ -59,6 +59,7 @@ langHooks.push((ar) => {
 document.getElementById("lang-toggle").addEventListener("click", () => {
   const ar = !isArabic();
   setLang(ar ? "ar" : "en");
+  try { localStorage.setItem("mm-lang", ar ? "ar" : "en"); } catch (e) {}
   // keep the address in step with the language, so a shared link opens the same language
   const url = new URL(location.href);
   url.searchParams.set("lang", ar ? "ar" : "en");
@@ -920,9 +921,13 @@ const Viewer = (() => {
 // Open the Arabic version when the address has ?lang=ar
 // ---------------------------------------------------------------------
 {
+  // order: ?lang in the address > the visitor's last choice > the device language
   const q = new URLSearchParams(location.search).get("lang");
+  let saved = null;
+  try { saved = localStorage.getItem("mm-lang"); } catch (e) {}
   const dev = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
-  if (q === "ar" || (!q && /^ar\b/i.test(dev))) setLang("ar");
+  const want = q || saved || (/^ar\b/i.test(dev) ? "ar" : "en");
+  if (want === "ar") setLang("ar");
 }
 // open a project directly from a link like projects.html#project-park
 if (location.hash.startsWith("#project-")) {
