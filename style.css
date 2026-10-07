@@ -1391,3 +1391,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .fab-quote { right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); padding: 11px 15px; font-size: 14px; }
   .cta-actions .btn { width: 100%; justify-content: center; }
 }
+
+/* ===================== Projects tab + see-all ===================== */
+.nav .nav-projects { color: var(--ink); background: var(--gold); padding: 7px 14px; border-radius: 999px; font-weight: 700; }
+.nav .nav-projects:hover { background: #f6d28c; color: var(--ink); }
+.see-all { display: flex; justify-content: center; margin-top: 28px; }

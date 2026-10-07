@@ -52,7 +52,8 @@ langHooks.push((ar) => {
   const m = ar ? META.ar : META.en;
   document.title = m.title;
   document.querySelector('meta[name="description"]').content = m.desc;
-  canonical.href = ar ? SITE + "?lang=ar" : SITE;
+  const page = location.pathname.endsWith("projects.html") ? "projects.html" : "";
+  canonical.href = SITE + page + (ar ? "?lang=ar" : "");
 });
 
 document.getElementById("lang-toggle").addEventListener("click", () => {
@@ -60,11 +61,10 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
   setLang(ar ? "ar" : "en");
   // keep the address in step with the language, so a shared link opens the same language
   const url = new URL(location.href);
-  if (ar) url.searchParams.set("lang", "ar");
-  else url.searchParams.delete("lang");
+  url.searchParams.set("lang", ar ? "ar" : "en");
   history.replaceState(null, "", url.pathname + url.search + url.hash);
 });
-canonical.href = SITE;
+canonical.href = SITE + (location.pathname.endsWith("projects.html") ? "projects.html" : "");
 // the site opens in English; ?lang=ar opens the Arabic version (this is the address Google indexes for Arabic)
 
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -74,6 +74,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // ---------------------------------------------------------------------
 (() => {
   const el = document.getElementById("typing-title");
+  if (!el) return;
   const TEXT = {
     en: "Civil / Steel Structures Design Engineer",
     ar: "مهندس مدني / تصميم منشآت معدنية",
@@ -150,6 +151,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // ---------------------------------------------------------------------
 (() => {
   const wrap = document.getElementById("hero-model");
+  if (!wrap) return;
   const canvas = document.getElementById("model-canvas");
   const callout = document.getElementById("callout");
   const read = document.getElementById("ch-read");
@@ -506,6 +508,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // ---------------------------------------------------------------------
 const Projects = (() => {
   const grid = document.getElementById("project-grid");
+  if (!grid) return { visible: () => [], byId: () => null };
   const all = [...grid.querySelectorAll(".project")];
   const viewable = all.filter((p) => !p.classList.contains("project-doc"));
 
@@ -612,6 +615,7 @@ document.querySelectorAll("[data-open]").forEach((b) => {
   b.addEventListener("click", () => {
     const p = Projects.byId(b.dataset.open);
     if (p) Viewer.open(p);
+    else location.href = "projects.html#" + b.dataset.open;
   });
 });
 
@@ -823,6 +827,7 @@ const Viewer = (() => {
 // ---------------------------------------------------------------------
 (() => {
   const form = document.getElementById("contact-form");
+  if (!form) return;
   const status = document.getElementById("form-status");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -914,4 +919,13 @@ const Viewer = (() => {
 // ---------------------------------------------------------------------
 // Open the Arabic version when the address has ?lang=ar
 // ---------------------------------------------------------------------
-if (new URLSearchParams(location.search).get("lang") === "ar") setLang("ar");
+{
+  const q = new URLSearchParams(location.search).get("lang");
+  const dev = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
+  if (q === "ar" || (!q && /^ar\b/i.test(dev))) setLang("ar");
+}
+// open a project directly from a link like projects.html#project-park
+if (location.hash.startsWith("#project-")) {
+  const p = Projects.byId(location.hash.slice(1));
+  if (p) setTimeout(() => Viewer.open(p), 300);
+}

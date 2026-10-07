@@ -11,6 +11,7 @@
   <!-- لو عملت Google Search Console حط هنا السطر اللي جوجل بيديهولك (google-site-verification) -->
 
   <!-- النسخة العربي على نفس الصفحة بـ ?lang=ar عشان جوجل يقراها ويظهرها لمن يبحث بالعربي -->
+  <link rel="canonical" href="https://mohamedmostafa20-max.github.io/">
   <link rel="alternate" hreflang="en" href="https://mohamedmostafa20-max.github.io/">
   <link rel="alternate" hreflang="ar" href="https://mohamedmostafa20-max.github.io/?lang=ar">
   <link rel="alternate" hreflang="x-default" href="https://mohamedmostafa20-max.github.io/">
@@ -170,7 +171,7 @@
        فتح الموقع مرة بـ #mohamed على جهازك = زياراتك مش هتتحسب، و #mohamed-off بيلغيها -->
   <script>try{if(location.hash==="#mohamed"){localStorage.setItem("mm-owner","1");localStorage.setItem("skipgc","t")}else if(location.hash==="#mohamed-off"){localStorage.removeItem("mm-owner");localStorage.removeItem("skipgc")}}catch(e){}</script>
   <script data-goatcounter="https://mohamedmustafa.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="images/favicon-48.png" type="image/png" sizes="48x48">
   <link rel="icon" href="images/favicon-192.png" type="image/png" sizes="192x192">
@@ -213,7 +214,7 @@
     </a>
     <nav class="nav" id="nav" aria-label="Main">
       <a href="#about" data-ar="نبذة">About</a>
-      <a href="#projects" data-ar="المشاريع">Projects</a>
+      <a href="projects.html" class="nav-projects" data-ar="المشاريع">Projects</a>
       <a href="#expertise" data-ar="الخبرة">Expertise</a>
       <a href="#skills" data-ar="المهارات">Skills</a>
       <a href="#contact" data-ar="تواصل">Contact</a>
@@ -349,6 +350,7 @@
           </span>
         </button>
       </div>
+      <div class="see-all"><a class="btn btn-gold" href="projects.html" data-goatcounter-click="see-all-projects"><span data-ar="شوف كل المشاريع">See all projects</span></a></div>
     </section>
 
     <!-- ===================== مجالات الخبرة ===================== -->
@@ -439,210 +441,6 @@
     </section>
 
     <!-- ===================== المشاريع ===================== -->
-    <section class="section projects" id="projects">
-      <div class="sec-head">
-        <h2 data-ar="المشاريع">Projects</h2>
-        <p class="sec-lead" data-ar="مختارات من أكثر من 200 مشروع معدني صمّمتها في مصر والسعودية والإمارات. افتح أي مشروع لتشوف الموديلات واللوحات.">A selection from 200+ steel projects I designed in Egypt, Saudi Arabia and the UAE. Open any project to see its models and drawings.</p>
-      </div>
-
-      <div class="filters" id="filters" role="toolbar" aria-label="Filter projects">
-        <span class="filter-ink" aria-hidden="true"></span>
-        <button type="button" class="filter active" data-filter="all"><span data-ar="الكل">All</span></button>
-        <button type="button" class="filter" data-filter="ksa"><svg class="ic"><use href="#i-pin"/></svg> <span data-ar="مشاريع السعودية">KSA Projects</span></button>
-        <button type="button" class="filter" data-filter="egypt"><svg class="ic"><use href="#i-pin"/></svg> <span data-ar="مشاريع مصر">Egypt Projects</span></button>
-        <button type="button" class="filter" data-filter="buildings"><span data-ar="مباني وصناعي">Buildings &amp; Industrial</span></button>
-        <button type="button" class="filter" data-filter="roofs"><span data-ar="قباب ومظلات">Domes &amp; Canopies</span></button>
-        <button type="button" class="filter" data-filter="leisure"><span data-ar="ترفيه ومعالم">Leisure &amp; Landmarks</span></button>
-        <button type="button" class="filter" data-filter="special"><span data-ar="منشآت خاصة">Special Structures</span></button>
-        <button type="button" class="filter" data-filter="connections"><span data-ar="وصلات وحسابات">Connections &amp; Calcs</span></button>
-      </div>
-
-      <!--
-        لإضافة مشروع: انسخ أي <article class="project"> وغيّر العنوان والتاجات والوصف وأسماء الصور في data-images.
-        الصورة الصغيرة في images/thumb والكبيرة في images/full بنفس الاسم.
-      -->
-      <div class="project-grid" id="project-grid">
-          <!-- مشروع 1 -->
-          <article class="project" id="project-mbc" data-cat="buildings" data-country="ksa" data-images="mbc-studios-riyadh-steel-structure-1 mbc-studios-riyadh-steel-structure-2 mbc-studios-riyadh-steel-structure-3 mbc-studios-riyadh-steel-structure-4 mbc-studios-riyadh-steel-structure-5 mbc-studios-riyadh-steel-structure-6 mbc-studios-riyadh-steel-structure-7 mbc-studios-riyadh-steel-structure-8 mbc-studios-riyadh-steel-structure-9 mbc-studios-riyadh-steel-structure-10" data-fit="cover">
-            <h3 data-ar="استوديوهات MBC">MBC Studios</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; النرجس، الرياض"><svg class="pin-icon"><use href="#i-pin"/></svg> Al Narjis, Riyadh, KSA</span><span class="meta-tag" data-ar="منشآت ثقيلة وخفيفة">Heavy &amp; light steel</span><span class="meta-tag" data-ar="استوديوهات تلفزيونية">TV studios</span><span class="meta-tag" data-ar="الكود الأمريكي">American code</span></p>
-            <p class="project-description" data-ar="التصميم الإنشائي لمشاريع معدنية ثقيلة وخفيفة في السعودية، منها استوديوهات MBC وسيكس فلاجز القدية (النهضة – Seven Group) ومظلات محطات الوقود. كل المشاريع صُمّمت من الصفر وفق الكود الأمريكي. استوديوهات MBC في حي النرجس بالرياض تشمل جمالونات السقف، وإطارات الحوائط الجانبية، وممرات الصيانة (Catwalks)، وكمرات الأوناش.">Structural design of heavy and light steel projects in Saudi Arabia, including MBC Studios, Six Flags Qiddiya (Al Nahda – Seven Group), and fuel station canopies. All projects were designed from scratch in compliance with the American code. The MBC TV studios in Al Narjis, Riyadh include framed roof trusses, side-wall framing, catwalks and gantry beams.</p>
-          </article>
-          <!-- مخزن القمم الصناعي - 6 أكتوبر -->
-          <article class="project" id="project-qemam" data-cat="buildings" data-country="egypt" data-images="al-qemam-industrial-warehouse-site-photo al-qemam-industrial-warehouse-1 al-qemam-industrial-warehouse-2 al-qemam-industrial-warehouse-3 al-qemam-industrial-warehouse-4 al-qemam-industrial-warehouse-5 al-qemam-industrial-warehouse-6 al-qemam-industrial-warehouse-7 al-qemam-industrial-warehouse-8">
-            <h3 data-ar="مخزن القمم الصناعي">Al Qemam Industrial Warehouse</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; 6 أكتوبر، الجيزة"><svg class="pin-icon"><use href="#i-pin"/></svg> 6th of October, Giza</span><span class="meta-tag" data-ar="5,850 م²">5,850 m²</span><span class="meta-tag" data-ar="دورين ميزانين">Two mezzanines</span><span class="meta-tag" data-ar="الرفرف +12.00 م">Eave +12.00 m</span></p>
-            <p class="project-description" data-ar="مخزن صناعي في مدينة 6 أكتوبر، الجيزة: مبنى حديد بأبعاد 90 × 65 م (5,850 م²) بإطارات بورتال، وتكتيف للسقف والحوائط، ودورين ميزانين على منسوب +7.20 و+10.20 م، ووصلات مسمارية بألواح طرفية. الصورة الأولى من الموقع بعد التركيب.">Industrial warehouse in 6th of October City, Giza: a 90 × 65 m steel building (5,850 m²) with portal frames, roof and wall bracing, two mezzanine floors at +7.20 and +10.20 m, and bolted end-plate connections. The first image is a site photo after erection.</p>
-          </article>
-
-          <!-- مظلة الحرم المكي -->
-          <article class="project" id="project-haram" data-cat="roofs" data-country="ksa" data-images="makkah-haram-steel-canopy-1">
-            <h3 data-ar="مظلة الحرم المكي">Canopy at Al-Haram Al-Makki</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; مكة المكرمة، السعودية"><svg class="pin-icon"><use href="#i-pin"/></svg> Makkah, KSA</span><span class="meta-tag" data-ar="مظلة">Canopy</span><span class="meta-tag" data-ar="أعمدة مائلة">Inclined columns</span><span class="meta-tag">SAP2000</span></p>
-            <p class="project-description" data-ar="مظلة معدنية في الحرم المكي بمكة المكرمة محمولة على أعمدة مائلة، مع النمذجة والتصميم على SAP2000.">Steel canopy at Al-Haram Al-Makki in Makkah, carried on inclined columns, modeled and designed in SAP2000.</p>
-          </article>
-          <!-- مظلة القاهرة الجديدة -->
-          <article class="project" data-cat="roofs" data-country="egypt" data-images="new-cairo-steel-canopy-1">
-            <h3 data-ar="مظلة القاهرة الجديدة">New Cairo Canopy</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; القاهرة الجديدة، مصر"><svg class="pin-icon"><use href="#i-pin"/></svg> New Cairo, Egypt</span><span class="meta-tag" data-ar="سقف فراشة">Butterfly roof</span><span class="meta-tag">SAP2000</span></p>
-            <p class="project-description" data-ar="مظلة معدنية بسقف على شكل V (فراشة) في القاهرة الجديدة، مع النمذجة والتصميم على SAP2000.">Steel canopy with a V-shaped (butterfly) roof in New Cairo, modeled and designed in SAP2000.</p>
-          </article>
-          <!-- مظلة إعمار مصر - أب تاون كايرو -->
-          <article class="project" data-cat="roofs" data-country="egypt" data-images="uptown-cairo-steel-canopy-1 uptown-cairo-steel-canopy-2 uptown-cairo-steel-canopy-3">
-            <h3 data-ar="مظلة أب تاون كايرو">Uptown Cairo Canopy</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; أب تاون كايرو، القاهرة"><svg class="pin-icon"><use href="#i-pin"/></svg> Uptown Cairo, Egypt</span><span class="meta-tag" data-ar="إمارات مصر">Emarat Misr</span><span class="meta-tag" data-ar="جمالونات سقف">Roof trusses</span></p>
-            <p class="project-description" data-ar="مظلة معدنية لشركة إمارات مصر في أب تاون كايرو: سقف كبير من جمالونات معدنية على جانبي كمرة رئيسية في المنتصف، محمول على أعمدة معدنية.">Steel canopy for Emarat Misr at Uptown Cairo: a large roof framed with steel trusses on both sides of a central spine girder, carried on steel columns.</p>
-          </article>
-          <!-- ستاد - هنجر معدني -->
-          <article class="project" data-cat="roofs" data-country="egypt" data-images="stadium-steel-shed-new-capital-1 stadium-steel-shed-new-capital-2">
-            <h3 data-ar="هنجر معدني لاستاد">Stadium Steel Shed</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; العاصمة الإدارية، مصر"><svg class="pin-icon"><use href="#i-pin"/></svg> New Capital, Egypt</span><span class="meta-tag" data-ar="جمالونات سقف بأربع ميول">Hip-roof trusses</span><span class="meta-tag" data-ar="شبك ممدد وقرميد">Metal lath &amp; tiles</span></p>
-            <p class="project-description" data-ar="هنجر معدني لاستاد: سقف بأربع ميول من جمالونات معدنية على صف واحد من الأعمدة، ومكسو بشبك ممدد مُليّس يحمل القرميد. موديل SAP2000 ولوحة المساقط والتفاصيل كاملة.">Steel shed for a stadium: a hipped roof of steel trusses on a single row of columns, clad with plastered metal lath carrying roof tiles. SAP2000 model plus the full layout and detail sheet.</p>
-          </article>
-          <!-- مظلة موبيل سفاجا -->
-          <article class="project" data-cat="roofs" data-country="egypt" data-images="mobil-safaga-petrol-station-canopy-1 mobil-safaga-petrol-station-canopy-2 mobil-safaga-petrol-station-canopy-3">
-            <h3 data-ar="مظلة محطة موبيل سفاجا">Mobil Safaga Station Canopy</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; سفاجا، البحر الأحمر"><svg class="pin-icon"><use href="#i-pin"/></svg> Safaga, Red Sea, Egypt</span><span class="meta-tag" data-ar="إكسون موبيل">ExxonMobil</span><span class="meta-tag" data-ar="محطة وقود">Petrol station</span></p>
-            <p class="project-description" data-ar="مظلة محطة وقود لشركة إكسون موبيل في موبيل سفاجا: سقف معدني على أعمدة رأسية ومائلة، مع القواعد ومسامير التثبيت، والمزاريب وصرف المياه داخل الأعمدة.">Petrol station canopy for ExxonMobil at Mobil Safaga: steel roof on vertical and inclined columns, foundations and anchor bolts, rain gutters and drainage through the columns.</p>
-          </article>
-          <!-- مصنع أعلاف العاشر من رمضان -->
-          <article class="project" data-cat="buildings" data-country="egypt" data-images="feed-mill-steel-structure-10th-of-ramadan-1">
-            <h3 data-ar="مصنع أعلاف">Feed Mill</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; مدينة العاشر من رمضان"><svg class="pin-icon"><use href="#i-pin"/></svg> 10th of Ramadan City, Egypt</span><span class="meta-tag" data-ar="ارتفاع 28 م">28 m high</span><span class="meta-tag" data-ar="صناعي">Industrial</span></p>
-            <p class="project-description" data-ar="منشأ معدني لمصنع أعلاف في مدينة العاشر من رمضان بارتفاع 28 م، بإطارات مكتّفة وعدة منصات داخلية لمعدات المصنع.">Steel structure for a feed mill in 10th of Ramadan City, 28 m high, with braced frames and several internal platform levels for the plant equipment.</p>
-          </article>
-          <!-- كارفور الغردقة -->
-          <article class="project" data-cat="buildings" data-country="egypt" data-images="carrefour-hurghada-steel-structure-1 carrefour-hurghada-steel-structure-2 carrefour-hurghada-steel-structure-3">
-            <h3 data-ar="كارفور الغردقة">Carrefour Hurghada</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; الغردقة، البحر الأحمر"><svg class="pin-icon"><use href="#i-pin"/></svg> Hurghada, Red Sea, Egypt</span><span class="meta-tag" data-ar="سقف بحور كبيرة">Long-span roof</span><span class="meta-tag" data-ar="أعمدة شبكية">Lattice columns</span></p>
-            <p class="project-description" data-ar="منشأ معدني لفرع كارفور في الغردقة: سقف بحور كبيرة من جمالونات معدنية على أعمدة شبكية مُركّبة، مع المساقط والواجهات وقواعد الأعمدة وتفاصيل الوصلات.">Steel structure for a Carrefour store in Hurghada: a long-span roof of steel trusses on built-up lattice columns, with steel plans, elevations, base plates and connection details.</p>
-          </article>
-          <!-- فندق جدة سريع التجميع -->
-          <article class="project" data-cat="buildings" data-country="ksa" data-images="jeddah-modular-hotel-steel-structure-1 jeddah-modular-hotel-steel-structure-2">
-            <h3 data-ar="فندق سريع التجميع">Modular Hotel</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; جدة، السعودية"><svg class="pin-icon"><use href="#i-pin"/></svg> Jeddah, KSA</span><span class="meta-tag" data-ar="6 طوابق">6 storeys</span><span class="meta-tag" data-ar="تصميم زلزالي">Seismic design</span></p>
-            <p class="project-description" data-ar="فندق من 6 طوابق في جدة مكوّن من وحدات (كرفانات) مسبقة الصنع تُجمّع وتُربط بالمسامير في الموقع. صُمّم على أعلى قيمة زلزالية في المملكة، بما فيها وصلة الربط بين الوحدات.">A fast-assembly 6-storey hotel in Jeddah built from prefabricated caravan modules that are bolted together on site. The structure was designed for the highest seismic value in Saudi Arabia, including the bolted connection that joins the modules.</p>
-          </article>
-          <!-- مشروع السفينة -->
-          <article class="project" id="project-ship" data-cat="leisure" data-country="egypt" data-images="porto-cruise-ship-building-steel-structure-1 porto-cruise-ship-building-steel-structure-2 porto-cruise-ship-building-steel-structure-3">
-            <h3 data-ar="سفينة العلمين">Ship Al-Alamein</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; بورتو كروز، العلمين"><svg class="pin-icon"><use href="#i-pin"/></svg> Porto Cruise, El Alamein, Egypt</span><span class="meta-tag" data-ar="حديد معماري">Architectural steel</span><span class="meta-tag">SAP2000</span></p>
-            <p class="project-description" data-ar="الهيكل المعدني للغلاف المنحني لمشروع بورتو كروز – العلمين الجديدة، أول مبنى سكني على شكل سفينة في الشرق الأوسط (حوالي 57,000 م²): إطارات البدن وشكل المقدمة وهيكل السقف، مع نمذجة ثلاثية الأبعاد وتصميم على SAP2000.">Steel framing for the curved envelope of Porto Cruise – New Alamein, the first ship-shaped (cruise-liner inspired) residential building in the Middle East (~57,000 m²): hull frames, bow geometry and roof framing, modeled in 3D and designed in SAP2000.</p>
-          </article>
-          <!-- مشروع 2 -->
-          <article class="project" data-cat="leisure" data-country="egypt" data-images="porto-cruise-alamein-steel-roof-1 porto-cruise-alamein-steel-roof-2 porto-cruise-alamein-steel-roof-3 porto-cruise-alamein-steel-roof-4 porto-cruise-alamein-steel-roof-5 porto-cruise-alamein-steel-roof-6 porto-cruise-alamein-steel-roof-7" data-fit="cover">
-            <h3 data-ar="بورتو كروز العلمين">Porto Cruise Alamein</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; العلمين، مصر"><svg class="pin-icon"><use href="#i-pin"/></svg> El Alamein, Egypt</span><span class="meta-tag" data-ar="جمالونات سقف">Roof trusses</span><span class="meta-tag" data-ar="حديد معماري">Architectural steel</span></p>
-            <p class="project-description" data-ar="تصميم ونمذجة ثلاثية الأبعاد لهياكل معدنية معقدة في مشروع بورتو كروز العلمين، منها جمالونات الأسقف وأنظمة معدنية معمارية خاصة، مع التحليل الإنشائي وتحسين الأحمال والتحقق من الاتزان وقابلية التنفيذ وفق الأكواد.">Structural design and 3D modeling of complex steel frameworks for the Porto Cruise Alamein project, including roof trusses and special architectural steel systems. Work involved analytical modeling, load optimization, and ensuring compliance with design codes for stability and constructability.</p>
-          </article>
-          <!-- مدينة ملاهي مائية للأطفال -->
-          <article class="project" id="project-park" data-cat="leisure" data-country="egypt" data-images="kids-water-park-water-slides-site-photo kids-water-park-steel-water-slides-2 kids-water-park-steel-water-slides-3 kids-water-park-steel-water-slides-4 kids-water-park-steel-water-slides-5 kids-water-park-steel-water-slides-6 kids-water-park-steel-water-slides-7 kids-water-park-steel-water-slides-8 kids-water-park-steel-water-slides-9">
-            <h3 data-ar="مدينة ملاهي مائية للأطفال">Kids Water Park</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; مصر"><svg class="pin-icon"><use href="#i-pin"/></svg> Egypt</span><span class="meta-tag" data-ar="منصات">Platforms</span><span class="meta-tag" data-ar="زحاليق مائية">Water slides</span></p>
-            <p class="project-description" data-ar="منصات وسلالم وزحاليق مائية من الحديد لمدينة ملاهي مائية للأطفال في مصر، والصورة الأولى من الموقع بعد التنفيذ. كل زحليقة معلّقة من منصتها العلوية ومحمولة على أعمدة معدنية على طول نزولها، وتمت نمذجة جسم الزحليقة كـ shell على SAP2000.">Steel platforms, stairs and water slides for a kids’ water park in Egypt; the first image is a site photo after construction. Each slide hangs from its top platform and is carried by steel columns along its descent, modeled in SAP2000 with the slide body as a shell.</p>
-          </article>
-          <!-- القباب المعدنية بالقاهرة -->
-          <article class="project" data-cat="roofs" data-country="egypt" data-images="steel-dome-cairo-1 steel-dome-cairo-2">
-            <h3 data-ar="قباب معدنية">Steel Domes</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; القاهرة، مصر"><svg class="pin-icon"><use href="#i-pin"/></svg> Cairo, Egypt</span><span class="meta-tag" data-ar="Ø 17.35 م">Ø 17.35 m</span><span class="meta-tag" data-ar="Ø 13.35 م">Ø 13.35 m</span></p>
-            <p class="project-description" data-ar="قبتان معدنيتان في القاهرة بقطر 17.35 م و13.35 م، مكوّنتان من أضلاع منحنية وحلقات أفقية وتكتيف قطري.">Two steel domes in Cairo, 17.35 m and 13.35 m in diameter, framed with curved ribs, horizontal rings and diagonal bracing.</p>
-          </article>
-          <!-- استكمال فندق العالمين -->
-          <article class="project" data-cat="buildings" data-country="egypt" data-images="alamein-hotel-steel-vertical-extension-1">
-            <h3 data-ar="تعلية فندق">Hotel Vertical Extension</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; العلمين، مصر"><svg class="pin-icon"><use href="#i-pin"/></svg> El Alamein, Egypt</span><span class="meta-tag" data-ar="+4 أدوار معدنية">+4 steel floors</span><span class="meta-tag" data-ar="فندق خرساني قائم">Existing RC hotel</span></p>
-            <p class="project-description" data-ar="استكمال فندق خرساني قائم في العلمين بإضافة أربعة أدوار معدنية. تم اختيار الحديد لتقليل الوزن المضاف وردود الأفعال على المنشأ الخرساني القائم لأقل حد ممكن.">Completing an existing concrete hotel in El Alamein with four additional steel floors. Steel was chosen to keep the added weight, and the reactions on the existing concrete structure, as low as possible.</p>
-          </article>
-          <!-- مبنى بنك - هايد بارك -->
-          <article class="project" data-cat="buildings" data-country="egypt" data-images="hyde-park-bank-steel-building-1 hyde-park-bank-steel-building-2 hyde-park-bank-steel-building-3">
-            <h3 data-ar="مبنى بنك – هايد بارك">Bank Building – Hyde Park</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; هايد بارك، القاهرة الجديدة"><svg class="pin-icon"><use href="#i-pin"/></svg> Hyde Park, New Cairo</span><span class="meta-tag" data-ar="دوران">Two levels</span><span class="meta-tag" data-ar="سلالم معدنية">Steel stairs</span></p>
-            <p class="project-description" data-ar="مبنى معدني من دورين لبنك في هايد بارك: هيكل الأرضيات والسقف بقطاعات IPE، ووصلات كمرات مسمارية، وسلالم معدنية.">Two-level steel building for a bank at Hyde Park: floor and roof framing in IPE sections, bolted beam-to-beam connections and steel stairs.</p>
-          </article>
-          <!-- مزرعة جدة -->
-          <article class="project" data-cat="buildings" data-country="ksa" data-images="jeddah-farm-steel-sheds-1">
-            <h3 data-ar="مباني مزرعة">Farm Buildings</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; جدة، السعودية"><svg class="pin-icon"><use href="#i-pin"/></svg> Jeddah, KSA</span><span class="meta-tag" data-ar="30,000 م²">30,000 m²</span><span class="meta-tag" data-ar="هناجر معدنية">Steel sheds</span></p>
-            <p class="project-description" data-ar="هناجر معدنية لمزرعة مساحتها 30,000 م² في جدة: إطارات بورتال متكررة ومدادات سقف وتكتيف على طول مبانٍ طويلة.">Steel sheds for a 30,000 m² farm in Jeddah: repetitive portal frames, roof purlins and bracing along long buildings.</p>
-          </article>
-          <!-- خزان توتال TK-08 -->
-          <article class="project" data-cat="special" data-images="total-tk-08-api-650-storage-tank-1 total-tk-08-api-650-storage-tank-2 total-tk-08-api-650-storage-tank-3 total-tk-08-api-650-storage-tank-4 total-tk-08-api-650-storage-tank-5">
-            <h3 data-ar="خزان بنزين توتال TK-08">Total Gasoline Tank TK-08</h3>
-            <p class="project-meta"><span class="meta-tag">API 650</span><span class="meta-tag" data-ar="Ø 10.4 م × 13.57 م">Ø 10.4 m × 13.57 m</span><span class="meta-tag" data-ar="توتال إنرجيز">TotalEnergies</span></p>
-            <p class="project-description" data-ar="خزان تخزين بنزين TK-08 لشركة توتال، مصمم وفق API 650 (الإصدار 13): حلقات الجسم، وتوزيع ألواح القاع والسقف، وهيكل السقف، والفتحات، وفتحات الدخول، والتهوية، وحوض التصريف، والسلم الحلزوني والدرابزين. موديل SAP2000 وأربع لوحات تنفيذية.">Gasoline storage tank TK-08 for Total, designed to API 650 (13th ed.): shell courses, bottom and roof plate layouts, roof framing, nozzles, manholes, vents, draw-off sump, spiral stair and handrail. SAP2000 model and four layout sheets.</p>
-          </article>
-          <!-- خزان إكسون موبيل -->
-          <article class="project" data-cat="special" data-images="exxonmobil-api-650-storage-tank-1">
-            <h3 data-ar="خزان بنزين إكسون موبيل">ExxonMobil Gasoline Tank</h3>
-            <p class="project-meta"><span class="meta-tag">API 650</span><span class="meta-tag" data-ar="Ø 9.0 م × 10.5 م">Ø 9.0 m × 10.5 m</span><span class="meta-tag" data-ar="إكسون موبيل">ExxonMobil</span></p>
-            <p class="project-description" data-ar="خزان تخزين بنزين لشركة إكسون موبيل، مصمم وفق API 650: سُمك حلقات الجسم، وألواح القاع والحلقة الخارجية، وهيكل السقف، والتحقق من الاتزان تحت أحمال الرياح والزلازل، والتثبيت.">Gasoline storage tank for ExxonMobil, designed to API 650: shell course thicknesses, bottom and annular plates, roof structure, wind and seismic stability checks and anchorage.</p>
-          </article>
-          <!-- صالة الجمباز بالرياض -->
-          <article class="project" data-cat="buildings" data-country="ksa" data-images="riyadh-gymnastics-hall-steel-structure-1">
-            <h3 data-ar="صالة جمباز">Gymnastics Hall</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; الرياض، السعودية"><svg class="pin-icon"><use href="#i-pin"/></svg> Riyadh, KSA</span><span class="meta-tag" data-ar="إطار متعدد المستويات">Multi-level frame</span><span class="meta-tag" data-ar="سلالم خارجية">External stairs</span></p>
-            <p class="project-description" data-ar="منشأ معدني لصالة جمباز في الرياض: إطار متعدد المستويات بسقف منحني وسلالم معدنية خارجية.">Steel structure for a gymnastics hall in Riyadh: a multi-level frame with a curved roof and external steel stairs.</p>
-          </article>
-          <!-- مطعم الرياض -->
-          <article class="project" data-cat="buildings" data-country="ksa" data-images="riyadh-restaurant-steel-structure-1">
-            <h3 data-ar="مطعم">Restaurant</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; الرياض، السعودية"><svg class="pin-icon"><use href="#i-pin"/></svg> Riyadh, KSA</span><span class="meta-tag" data-ar="دوران">Two levels</span><span class="meta-tag">SAP2000</span></p>
-            <p class="project-description" data-ar="منشأ معدني من دورين لمطعم في الرياض، مع جزء سقف مرتفع فوق جزء من المبنى.">Two-level steel structure for a restaurant in Riyadh, with a raised roof section over part of the building.</p>
-          </article>
-          <!-- جانتري كرين بمظلة متحركة -->
-          <article class="project" data-cat="special" data-images="gantry-crane-moving-canopy-steel-1">
-            <h3 data-ar="ونش جسري بمظلة متحركة">Gantry Crane with Moving Canopy</h3>
-            <p class="project-meta"><span class="meta-tag" data-ar="ونش جسري">Gantry crane</span><span class="meta-tag" data-ar="مظلة متحركة">Moving canopy</span></p>
-            <p class="project-description" data-ar="ونش جسري (جانتري كرين) يحمل مظلته الخاصة فتتحرك المظلة مع الونش. تم تصميم الأرجل وسلالم الوصول وكمرة الونش وهيكل السقف كمنشأ واحد متحرك.">A gantry crane that carries its own canopy, so the cover travels with the crane. The legs, access ladders, crane girder and roof framing were designed as one moving structure.</p>
-          </article>
-          <!-- لوحة إعلانات - السعودية -->
-          <article class="project" data-cat="special" data-country="ksa" data-images="saudi-sign-board-steel-structure-1 saudi-sign-board-steel-structure-2 saudi-sign-board-steel-structure-3 saudi-sign-board-steel-structure-4 saudi-sign-board-steel-structure-5">
-            <h3 data-ar="منشأ لوحة إعلانات">Advertising Sign Structure</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; السعودية"><svg class="pin-icon"><use href="#i-pin"/></svg> Saudi Arabia</span><span class="meta-tag">Holiday Inn Express</span><span class="meta-tag" data-ar="وصلات معدنية">Steel connections</span></p>
-            <p class="project-description" data-ar="منشأ معدني للوحة إعلانات كبيرة في مشروع هوليداي إن إكسبريس بالسعودية: أعمدة وجمالونات وتكتيف، مع الوصلات المعدنية وقواعد الأعمدة وردود الأفعال.">Steel structure for a large sign board on a Holiday Inn Express project in Saudi Arabia: columns, trusses and bracing, with steel connections, base plates and joint reactions.</p>
-          </article>
-          <!-- سلم دائري - الإمارات -->
-          <article class="project" data-cat="special" data-country="uae" data-images="uae-steel-spiral-staircase-1">
-            <h3 data-ar="سلم دائري">Spiral Staircase</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; الإمارات"><svg class="pin-icon"><use href="#i-pin"/></svg> UAE</span><span class="meta-tag" data-ar="حوامل حلزونية">Helical stringers</span><span class="meta-tag">SAP2000</span></p>
-            <p class="project-description" data-ar="سلم دائري معدني في الإمارات بحوامل حلزونية على الجانبين ودرجات بينهما.">Steel spiral staircase in the UAE with helical stringers on both sides and treads spanning between them.</p>
-          </article>
-          <!-- سلم بحاري - جدة -->
-          <article class="project" data-cat="special" data-country="ksa" data-images="jeddah-caged-access-ladder-1">
-            <h3 data-ar="سلم بحاري بقفص">Caged Access Ladder</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; جدة، السعودية"><svg class="pin-icon"><use href="#i-pin"/></svg> Jeddah, KSA</span><span class="meta-tag" data-ar="قفص حماية">Safety cage</span><span class="meta-tag">SAP2000</span></p>
-            <p class="project-description" data-ar="سلم بحاري بقفص حماية في جدة، مثبّت في المنشأ على مسافات منتظمة.">Caged access ladder in Jeddah, fixed to the structure at regular intervals.</p>
-          </article>
-          <!-- مشروع 4 -->
-          <article class="project" data-cat="buildings" data-country="egypt" data-images="steel-warehouse-hangar-drawings-1 steel-warehouse-hangar-drawings-2 steel-warehouse-hangar-drawings-3 steel-warehouse-hangar-drawings-4 steel-warehouse-hangar-drawings-5 steel-warehouse-hangar-drawings-6 steel-warehouse-hangar-drawings-7" data-fit="cover">
-            <h3 data-ar="مشاريع متنوعة">Various Projects</h3>
-            <p class="project-meta"><span class="meta-loc" data-ar="&lt;svg class=&quot;pin-icon&quot;&gt;&lt;use href=&quot;#i-pin&quot;/&gt;&lt;/svg&gt; مصر"><svg class="pin-icon"><use href="#i-pin"/></svg> Egypt</span><span class="meta-tag" data-ar="مخازن">Warehouses</span><span class="meta-tag" data-ar="هناجر">Hangars</span><span class="meta-tag" data-ar="رسومات تنفيذية">Shop drawings</span></p>
-            <p class="project-description" data-ar="تصميم ونمذجة عدة مشاريع معدنية منها مخازن وهناجر وإطارات معمارية. كل التصميمات من الصفر وفق الكودين الأمريكي والمصري، مع ضمان المقاومة والاتزان والأمان.">Structural design and modeling of several steel projects, including warehouses, hangars, and architectural frames. All designs were developed from scratch according to American and Egyptian codes, ensuring strength, stability, and safety.</p>
-          </article>
-          <!-- الوصلات -->
-          <article class="project" data-cat="connections" data-images="steel-connection-design-idea-statica-1 steel-connection-design-idea-statica-2 steel-connection-design-idea-statica-3 steel-connection-design-idea-statica-4 steel-connection-design-idea-statica-5 steel-connection-design-idea-statica-6 steel-connection-design-idea-statica-7 steel-connection-design-idea-statica-8 steel-connection-design-idea-statica-9 steel-connection-design-idea-statica-10 steel-connection-design-idea-statica-11 steel-connection-design-idea-statica-12 steel-connection-design-idea-statica-13 steel-connection-design-idea-statica-14 steel-connection-design-idea-statica-15 steel-connection-design-idea-statica-16 steel-connection-design-idea-statica-17">
-            <h3 data-ar="تصميم الوصلات">Connection Design</h3>
-            <p class="project-meta"><span class="meta-tag">IDEA StatiCa</span><span class="meta-tag" data-ar="مسمارية وملحومة">Bolted &amp; welded</span><span class="meta-tag" data-ar="قواعد أعمدة">Base plates</span></p>
-            <p class="project-description" data-ar="تصميم ومراجعة الوصلات المعدنية على IDEA StatiCa: وصلات عزم بألواح طرفية مسمارية، ووصلات قص كمرة-عمود وكمرة-كمرة، ووصلات تكتيف، ووصلات تمديد، وقواعد أعمدة بمسامير تثبيت، وكل وصلة محققة على قوى التصميم الخاصة بها.">Steel connection design and checks in IDEA StatiCa: bolted end-plate moment connections, beam-to-column and beam-to-beam shear connections, bracing connections, splices, and column base plates with anchor bolts, each checked for its design forces.</p>
-          </article>
-          <!-- V -->
-          <article class="project" data-cat="connections" data-images="steel-design-excel-sheet-1 steel-design-excel-sheet-2 steel-design-excel-sheet-3 steel-design-excel-sheet-4" data-fit="cover">
-            <h3 data-ar="أتمتة بالإكسل">Excel Automation</h3>
-            <p class="project-meta"><span class="meta-tag">Excel</span><span class="meta-tag" data-ar="شيتات تصميم">Design sheets</span></p>
-            <p class="project-description" data-ar="تطوير شيتات إكسل مخصصة للتحليل الإنشائي وحساب الأحمال وأتمتة تصميم الحديد، لرفع الدقة والسرعة وكفاءة التصميم.">Development of customized Excel sheets for structural analysis, load calculations, and steel design automation, enhancing accuracy, speed, and overall design efficiency.</p>
-          </article>
-          <!-- مذكرة الحسابات -->
-          <article class="project project-doc" id="project-calc" data-cat="connections">
-            <h3 data-ar="مذكرة حسابات">Calculation Note</h3>
-            <p class="project-meta"><span class="meta-tag">PDF</span><span class="meta-tag" data-ar="126 صفحة">126 pages</span></p>
-            <p class="project-description" data-ar="مذكرة حسابات تفصيلية لمنشأ معدني ثانوي يحمل منظومة تبريد: الأحمال وتجميعاتها، والتحليل على SAP2000، وتصميم العناصر والمسامير، وحدود الترخيم، وردود الأفعال.">A full design calculation report for secondary steel supporting a refrigeration system: loads and load combinations, SAP2000 analysis, member and bolt design, deflection checks and support reactions.</p>
-            <div class="doc-actions">
-              <a class="btn btn-gold btn-sm" href="images/project5.pdf" target="_blank" rel="noopener"><svg class="ic"><use href="#i-open"/></svg> <span data-ar="عرض">View</span></a>
-              <a class="btn btn-ghost btn-sm" href="images/project5.pdf" download><svg class="ic"><use href="#i-dl"/></svg> <span data-ar="تحميل">Download</span></a>
-            </div>
-          </article>
-      </div>
-    </section>
 
     <!-- ===================== التعليم والشهادات ===================== -->
     <section class="section credentials" id="education">
@@ -773,6 +571,6 @@
   </div>
 
   <!-- رقم ?v= بيتغيّر مع كل تحديث علشان الموبايل مايفضلش فاتح النسخة القديمة -->
-  <script src="main.js?v=8"></script>
+  <script src="main.js?v=9"></script>
 </body>
 </html>
