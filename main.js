@@ -889,11 +889,7 @@ const Viewer = (() => {
   }
   const base = `https://${CODE}.goatcounter.com`;
 
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = "https://gc.zgo.at/count.js";
-  script.dataset.goatcounter = base + "/count";
-  document.head.appendChild(script);
+  // the counting script itself is loaded from <head> in index.html
 
   // Visitors get GoatCounter's cached total (it refreshes every few hours).
   // On Mohamed's own devices ask for a fresh total: a different "start" date
