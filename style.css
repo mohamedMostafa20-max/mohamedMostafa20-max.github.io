@@ -269,7 +269,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero-name {
   margin: 26px 0 18px;
-  font-size: clamp(52px, 8.2vw, 128px);
+  font-size: clamp(44px, 5.8vw, 90px);
   font-weight: 800;
   font-stretch: 125%;
   line-height: 0.9;
@@ -1224,7 +1224,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 [dir="rtl"] button,
 [dir="rtl"] input,
 [dir="rtl"] textarea { font-family: var(--f-ar); }
-[dir="rtl"] .hero-name { font-family: var(--f-ar); font-stretch: normal; letter-spacing: 0; line-height: 1.15; font-size: clamp(50px, 7.4vw, 112px); }
+[dir="rtl"] .hero-name { font-family: var(--f-ar); font-stretch: normal; letter-spacing: 0; line-height: 1.15; font-size: clamp(42px, 5.2vw, 80px); }
 [dir="rtl"] .hero-name .w:nth-child(2) { -webkit-text-stroke-width: 1.2px; }
 [dir="rtl"] .sec-head h2,
 [dir="rtl"] .contact h2 { font-family: var(--f-ar); letter-spacing: 0; line-height: 1.3; }
