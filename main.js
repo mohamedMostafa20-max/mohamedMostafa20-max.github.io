@@ -17,7 +17,6 @@ const langHooks = [];
 function setLang(lang) {
   const ar = lang === "ar";
   document.documentElement.lang = ar ? "ar" : "en";
-  try { localStorage.setItem("mm-lang", ar ? "ar" : "en"); } catch (e) {}
   // carry the language in every internal page link, so the next page opens in the same language
   document.querySelectorAll('a[href]').forEach((link) => {
     const h = link.getAttribute("href");
@@ -34,7 +33,7 @@ function setLang(lang) {
   });
 
   const toggle = document.getElementById("lang-toggle");
-  toggle.textContent = ar ? "English" : "عربي";
+  toggle.textContent = ar ? "English" : "اللغة العربية";
   toggle.setAttribute("aria-label", ar ? "Switch to English" : "التبديل إلى العربية");
 
   langHooks.forEach((fn) => fn(ar));
@@ -68,7 +67,6 @@ langHooks.push((ar) => {
 document.getElementById("lang-toggle").addEventListener("click", () => {
   const ar = !isArabic();
   setLang(ar ? "ar" : "en");
-  try { localStorage.setItem("mm-lang", ar ? "ar" : "en"); } catch (e) {}
   // keep the address in step with the language, so a shared link opens the same language
   const url = new URL(location.href);
   url.searchParams.set("lang", ar ? "ar" : "en");
@@ -930,14 +928,16 @@ const Viewer = (() => {
 // Open the Arabic version when the address has ?lang=ar
 // ---------------------------------------------------------------------
 {
-  // order: ?lang in the address > the visitor's last choice > the device language
+  // the site always opens in English; Arabic is kept only while moving between its own pages
   const q = new URLSearchParams(location.search).get("lang");
-  let saved = null;
-  try { saved = localStorage.getItem("mm-lang"); } catch (e) {}
-  const dev = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
-  const want = q || saved || (/^ar\b/i.test(dev) ? "ar" : "en");
+  let internal = false;
+  try { internal = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
+  const want = internal && q === "ar" ? "ar" : "en";
   if (want === "ar") setLang("ar");
-  else { try { localStorage.setItem("mm-lang", "en"); } catch (e) {} }
+  else if (q === "ar") {
+    // opened from outside with ?lang=ar: show English and clean the address
+    history.replaceState(null, "", location.pathname + location.hash);
+  }
 }
 // open a project directly from a link like projects.html#project-park
 if (location.hash.startsWith("#project-")) {
