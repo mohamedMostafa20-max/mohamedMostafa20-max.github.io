@@ -1436,3 +1436,27 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .tool-list { display: grid; gap: 20px; }
 .tool-card[hidden] { display: none; }
 .nav .nav-free { color: var(--gold); }
+
+/* ===================== Free resources: 3D column base ===================== */
+.tool-visual { grid-template-columns: 300px 1fr; align-items: center; }
+.tool-visual .tool-body h3 { font-size: clamp(19px, 2.2vw, 26px); margin-bottom: 18px; }
+.tool-visual .tool-actions { flex-direction: row; flex-wrap: wrap; }
+.b3d { position: relative; width: 300px; height: 260px; perspective: 900px; }
+.b3d-rot { position: absolute; left: 50%; top: 58%; transform-style: preserve-3d;
+  transform: rotateX(-24deg) rotateY(35deg); animation: b3d-spin 22s linear infinite; }
+.b3d .fc { position: absolute; left: 0; top: 0; display: block; backface-visibility: visible; }
+.fc.conc { background: #6b7684; } .fc.conc.t { background: #8a95a3; } .fc.conc.r, .fc.conc.l { background: #56606d; }
+.fc.conc.f, .fc.conc.b { background: linear-gradient(180deg, #6b7684, #4c5560); }
+.fc.plate { background: #4f9dc9; } .fc.plate.t { background: #7cc3e6; }
+.fc.col { background: #2f7fb0; } .fc.col.t { background: #6fd3e8; } .fc.col.r, .fc.col.l { background: #25668e; }
+.fc.bolt { background: #c99a3c; } .fc.nut { background: #f0c674; } .fc.nut.r, .fc.nut.l { background: #c99a3c; }
+@keyframes b3d-spin { from { transform: rotateX(-24deg) rotateY(35deg); } to { transform: rotateX(-24deg) rotateY(395deg); } }
+@media (prefers-reduced-motion: reduce) { .b3d-rot { animation: none; } }
+@media (max-width: 800px) {
+  .tool-visual { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .tool-visual .tool-actions { justify-content: center; }
+  .b3d { width: 260px; height: 240px; }
+}
+.b3d { height: 300px; }
+.b3d-rot { top: 48%; }
+@media (max-width: 800px) { .b3d { width: 260px; height: 310px; } }
