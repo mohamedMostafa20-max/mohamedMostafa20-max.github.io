@@ -1493,3 +1493,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .dims { gap: 10px; }
   .dim-num { font-size: clamp(26px, 8.2vw, 36px); font-stretch: 100%; white-space: nowrap; }
 }
+/* phones: show the name next to the logo; the language button sits on the other side */
+@media (max-width: 900px) {
+  html:not([dir="rtl"]) .topbar { padding-left: var(--gutter); padding-right: calc(var(--gutter) + 150px); }
+  [dir="rtl"] .topbar { padding-right: var(--gutter); padding-left: calc(var(--gutter) + 104px); }
+  .brand-text { display: flex !important; }
+  .brand-name { font-size: 15px; }
+  .brand-role { font-size: 11px; }
+}
+@media (max-width: 360px) { .brand-role { display: none; } }
