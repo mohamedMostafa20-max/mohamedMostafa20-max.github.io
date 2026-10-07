@@ -1480,3 +1480,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 900px) {
   html:not([dir="rtl"]) .lang-toggle { left: auto; right: 16px; }
 }
+.link-exp { margin-top: 26px; }
+@media (max-width: 900px) {
+  .tabbar { grid-template-columns: repeat(5, 1fr); }
+  .tabbar a { font-size: 11px; }
+  /* quote button: a small round WhatsApp button on phones */
+  .fab-quote { width: 54px; height: 54px; padding: 0; justify-content: center; border-radius: 50%; }
+  .fab-quote span { display: none; }
+  .fab-quote .ic { width: 26px; height: 26px; }
+}
