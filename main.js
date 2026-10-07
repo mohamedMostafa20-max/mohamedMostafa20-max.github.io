@@ -17,6 +17,7 @@ const langHooks = [];
 function setLang(lang) {
   const ar = lang === "ar";
   document.documentElement.lang = ar ? "ar" : "en";
+  try { localStorage.setItem("mm-lang", ar ? "ar" : "en"); } catch (e) {}
   document.documentElement.dir = ar ? "rtl" : "ltr";
 
   document.querySelectorAll("[data-ar]").forEach((el) => {
@@ -928,6 +929,7 @@ const Viewer = (() => {
   const dev = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
   const want = q || saved || (/^ar\b/i.test(dev) ? "ar" : "en");
   if (want === "ar") setLang("ar");
+  else { try { localStorage.setItem("mm-lang", "en"); } catch (e) {} }
 }
 // open a project directly from a link like projects.html#project-park
 if (location.hash.startsWith("#project-")) {
