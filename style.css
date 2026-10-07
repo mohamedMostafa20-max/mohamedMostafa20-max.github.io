@@ -1412,3 +1412,5 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 [dir="rtl"] .link-all .ic { transform: scaleX(-1); }
 .link-all:hover { background: var(--gold); color: var(--ink); }
 .featured { padding-bottom: clamp(60px, 8vw, 110px); }
+.nav .nav-home { display: inline-flex; align-items: center; gap: 6px; }
+.nav .nav-home .ic { width: 15px; height: 15px; fill: currentColor; }
