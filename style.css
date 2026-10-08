@@ -1502,3 +1502,25 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .brand-role { font-size: 11px; }
 }
 @media (max-width: 360px) { .brand-role { display: none; } }
+
+/* ===================== Navigation colours =====================
+   Two separate jobs, two separate colours (same idea as Google / Facebook tabs):
+   - GOLD solid pill  = the important action  -> Projects
+   - CYAN indicator   = "you are here"        -> the current page (tinted pill + underline) */
+.nav .nav-free { color: var(--muted); }
+.nav a::before { background: rgba(232, 238, 245, 0.55); }          /* hover line: neutral */
+.nav a.is-active { color: var(--text); background: rgba(111, 211, 232, 0.13); border-radius: 999px; }
+.nav a.is-active::before { background: var(--cyan); height: 3px; bottom: -6px; left: 18px; right: 18px; border-radius: 3px; transform: scaleX(1); }
+.nav .nav-projects.is-active { color: var(--ink); background: var(--gold); box-shadow: none; }
+.nav .nav-projects::before { display: none; }
+.nav .nav-projects.is-active::before { display: block; }
+@media (max-width: 900px) {
+  .tabbar a { position: relative; }
+  .tabbar a .ic { padding: 4px 16px; box-sizing: content-box; border-radius: 999px; transition: background 0.3s; }
+  .tabbar a.on { color: var(--cyan); }
+  .tabbar a.on .ic { background: rgba(111, 211, 232, 0.18); }
+  .tabbar a.on::before { content: ""; position: absolute; top: -7px; left: 30%; right: 30%; height: 3px; border-radius: 0 0 3px 3px; background: var(--cyan); }
+  .tabbar a[href^="projects"] { color: var(--gold); }
+  .tabbar a[href^="projects"] .ic { width: 20px; height: 20px; }
+  .tabbar a[href^="projects"].on .ic { background: rgba(111, 211, 232, 0.18); }
+}
