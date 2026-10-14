@@ -1524,3 +1524,24 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .tabbar a[href^="projects"] .ic { width: 20px; height: 20px; }
   .tabbar a[href^="projects"].on .ic { background: rgba(111, 211, 232, 0.18); }
 }
+
+/* ---- 3D visuals for the online-tool cards ---- */
+.b3d .g3 { position: absolute; left: 0; top: 0; transform-style: preserve-3d; display: block; }
+.fc.beam { background: #c99a3c; } .fc.beam.t { background: #f0c674; } .fc.beam.web { background: #a07a2c; }
+.fc.stub { background: #56606d; } .fc.stub.t { background: #8a95a3; }
+.b3d-kf .kseg { animation: kf-buckle 3.6s ease-in-out infinite; }
+.b3d-kf .kseg .fc.t, .b3d-kf .kseg .fc.u { display: none; }
+@keyframes kf-buckle { 0%, 18%, 100% { translate: 0 0 0; } 50%, 68% { translate: var(--dx) 0 0; } }
+.fc.sflg { background: #2f7fb0; } .fc.sflg.t { background: #6fd3e8; } .fc.sflg.r, .fc.sflg.l { background: #25668e; }
+.fc.sweb { background: #c99a3c; } .fc.sweb.r, .fc.sweb.l { background: #f0c674; }
+.b3d-so .so-wl { animation: so-wl 7s ease-in-out infinite; }
+.b3d-so .so-wr { animation: so-wr 7s ease-in-out infinite; }
+.b3d-so .so-all { animation: so-depth 7s ease-in-out infinite; }
+@keyframes so-wl { 0%, 22%, 100% { translate: 0 0 0; } 45%, 72% { translate: 0 0 -44.5px; } }
+@keyframes so-wr { 0%, 22%, 100% { translate: 0 0 0; } 45%, 72% { translate: 0 0 44.5px; } }
+@keyframes so-depth { 0%, 100% { scale: 1 1 1; } 30% { scale: 1 .82 1; } 60% { scale: 1 1.06 1; } 85% { scale: 1 .9 1; } }
+@media (prefers-reduced-motion: reduce) { .b3d-kf .kseg, .b3d-so .so-wl, .b3d-so .so-wr, .b3d-so .so-all { animation: none; } }
+.tool-tags { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 0 0 18px; padding: 0; list-style: none; }
+.tool-tags li { font-size: 12.5px; color: var(--muted); border: 1px solid var(--rule-strong); border-radius: 999px; padding: 3px 10px; }
+.tool-visual .tool-body p.tool-desc { margin: -8px 0 14px; }
+@media (max-width: 800px) { .tool-tags { justify-content: center; } }
