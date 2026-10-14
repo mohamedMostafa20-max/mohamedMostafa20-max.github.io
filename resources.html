@@ -240,6 +240,7 @@
         <button type="button" class="kind" data-kind="web" data-ar="أدوات أونلاين">Online tools</button>
         <button type="button" class="kind" data-kind="sap" data-ar="موديلات SAP2000">SAP2000 models</button>
         <button type="button" class="kind" data-kind="idea" data-ar="ملفات IDEA StatiCa">IDEA StatiCa files</button>
+        <button type="button" class="btn btn-gold btn-sm fd-open" id="fd-open" style="margin-inline-start:auto" title="Design a whole SAP2000 model to ECP 205"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg> <span>Import s2k</span></button>
       </div>
       <!--
         To add a resource: copy one <article class="tool-card"> block below, set data-kind="web" | "sap" | "idea",
@@ -347,5 +348,14 @@
 
   <!-- رقم ?v= بيتغيّر مع كل تحديث علشان الموبايل مايفضلش فاتح النسخة القديمة -->
   <script src="main.js?v=17"></script>
+  <!-- Import s2k · Frame Designer: loaded only when the button is pressed -->
+  <script>(function(){var b=document.getElementById('fd-open');if(!b)return;var V='bc62e161',busy=0;
+function css(h){return new Promise(function(r){var l=document.createElement('link');l.rel='stylesheet';l.href=h;l.onload=r;l.onerror=r;document.head.appendChild(l)})}
+function js(s){return new Promise(function(r,j){var e=document.createElement('script');e.src=s;e.onload=r;e.onerror=function(){j(new Error('could not load '+s))};document.head.appendChild(e)})}
+b.addEventListener('click',function(){if(window.FrameDesigner)return FrameDesigner.open();if(busy)return;busy=1;b.style.opacity=.6;
+var base=new URL('/tools/frame-designer/',location.href).href;window.__FD_WORKER_SRC='importScripts("'+base+'fd-core.js?v='+V+'");';
+try{window.goatcounter&&goatcounter.count&&goatcounter.count({path:'import-s2k',title:'Import s2k',event:true})}catch(e){}
+Promise.all([css(base+'fd.css?v='+V),js(base+'fd-core.js?v='+V)]).then(function(){return js(base+'fd-ui.js?v='+V)}).then(function(){FrameDesigner.open()})
+.catch(function(e){alert('Could not open the designer: '+e.message)}).then(function(){busy=0;b.style.opacity=''})});})();</script>
 </body>
 </html>
