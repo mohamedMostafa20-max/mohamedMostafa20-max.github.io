@@ -82,6 +82,7 @@
 .fd-modal-box{background:var(--sheet);border-radius:12px;max-width:760px;width:100%;max-height:85%;overflow:auto;padding:18px 20px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .fd-modal-box h3{margin:0 0 6px;font-family:var(--f-display);font-size:20px}.fd-modal-box ul{margin:10px 0 0;padding-left:20px;font-size:13.5px;line-height:1.6;color:#7a4a08}
 .fd-win{position:relative}
+.fd-codes .fd-ex{font-family:var(--f-mono);font-size:12.5px;color:var(--ink);white-space:nowrap}
 
 .fdrep{--paper:#fdfcf8;--paper-rule:#e4ebf2;--paper-margin:#f0b3ab;--paper-ink:#1d2430;--paper-box:#0a6f94;--ink:#15212b;--ink2:#46566a;--ink3:#7b8899;--line:#d9e0e6;--line2:#e9eef2;--field:#f8fafb;--sheet:#fff;--hot-soft:#fdebd8;--r:8px;
 --f-book:'Cambria','Cambria Math','Times New Roman',serif;--f-body:'Source Sans 3','Segoe UI',Roboto,Arial,sans-serif;--f-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;--f-display:'Barlow Semi Condensed','Arial Narrow',Arial,sans-serif;color:var(--paper-ink)}
