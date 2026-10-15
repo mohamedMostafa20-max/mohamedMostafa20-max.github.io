@@ -85,6 +85,9 @@
 .fd-codes .fd-ex{font-family:var(--f-mono);font-size:12.5px;color:var(--ink);white-space:nowrap}
 .fd .fd-mode label{display:block;margin:6px 0;line-height:1.45}
 
+.fd .fd-ov.chk th:last-child,.fd .fd-ov.chk td:last-child{display:none}
+.fd label[hidden]{display:none!important}
+
 .fdrep{--paper:#fdfcf8;--paper-rule:#e4ebf2;--paper-margin:#f0b3ab;--paper-ink:#1d2430;--paper-box:#0a6f94;--ink:#15212b;--ink2:#46566a;--ink3:#7b8899;--line:#d9e0e6;--line2:#e9eef2;--field:#f8fafb;--sheet:#fff;--hot-soft:#fdebd8;--r:8px;
 --f-book:'Cambria','Cambria Math','Times New Roman',serif;--f-body:'Source Sans 3','Segoe UI',Roboto,Arial,sans-serif;--f-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;--f-display:'Barlow Semi Condensed','Arial Narrow',Arial,sans-serif;color:var(--paper-ink)}
 .fdrep .sol math{cursor:copy}
