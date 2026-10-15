@@ -1545,3 +1545,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .tool-tags li { font-size: 12.5px; color: var(--muted); border: 1px solid var(--rule-strong); border-radius: 999px; padding: 3px 10px; }
 .tool-visual .tool-body p.tool-desc { margin: -8px 0 14px; }
 @media (max-width: 800px) { .tool-tags { justify-content: center; } }
+
+/* ===================== "Free tools" stands out (cyan outline + live dot), without competing with the gold Projects pill ===================== */
+.nav .nav-free { color: var(--cyan); border: 1px solid rgba(111, 211, 232, 0.45); border-radius: 999px; padding-inline-start: 26px; background: rgba(111, 211, 232, 0.06); transition: color .3s, background .3s, border-color .3s; }
+.nav .nav-free::after { content: ""; position: absolute; left: 11px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border-radius: 50%; background: var(--cyan);
+  box-shadow: 0 0 0 0 rgba(111, 211, 232, 0.6); animation: navFreePulse 2.2s ease-out infinite; transform: none; bottom: auto; }
+[dir="rtl"] .nav .nav-free::after { left: auto; right: 11px; }
+.nav .nav-free:hover { color: var(--text); background: rgba(111, 211, 232, 0.14); border-color: var(--cyan); }
+.nav .nav-free::before { display: none; }
+.nav .nav-free.is-active { color: var(--text); background: rgba(111, 211, 232, 0.16); border-color: var(--cyan); }
+@keyframes navFreePulse { 0% { box-shadow: 0 0 0 0 rgba(111, 211, 232, 0.6); } 70% { box-shadow: 0 0 0 7px rgba(111, 211, 232, 0); } 100% { box-shadow: 0 0 0 0 rgba(111, 211, 232, 0); } }
+@media (prefers-reduced-motion: reduce) { .nav .nav-free::after { animation: none; } }
+/* mobile tab bar: Free tools in cyan with the same live dot */
+.tabbar a[href$="resources.html"]:not(.on) { color: var(--cyan); position: relative; }
+.tabbar a[href$="resources.html"]::after { content: ""; position: absolute; top: 3px; left: calc(50% + 9px); width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: navFreePulse 2.2s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) { .tabbar a[href$="resources.html"]::after { animation: none; } }
