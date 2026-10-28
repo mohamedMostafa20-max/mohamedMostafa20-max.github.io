@@ -917,10 +917,8 @@ if (location.hash.startsWith("#project-")) {
       cards.forEach((c) => (c.hidden = !(b.dataset.kind === "all" || (c.dataset.kind || "").split(" ").includes(b.dataset.kind))));
     });
   });
-  // card animations run only while the card is hovered (or, on touch screens, while it is in view)
-  const hover = window.matchMedia && matchMedia("(hover: hover)").matches;
+  // card animations run while the card is on screen (saves the battery of phones on long pages)
   const play = (c, on) => { c.classList.toggle("anim-on", on); c.querySelectorAll("svg").forEach((v) => { try { on ? v.unpauseAnimations() : v.pauseAnimations(); } catch (e) {} }); };
-  real.forEach((c) => play(c, false));
-  if (hover) real.forEach((c) => { c.addEventListener("mouseenter", () => play(c, true)); c.addEventListener("mouseleave", () => play(c, false)); });
-  else if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => es.forEach((e) => play(e.target, e.intersectionRatio > 0.6)), { threshold: [0, 0.6, 1] }); real.forEach((c) => io.observe(c)); }
+  if ("IntersectionObserver" in window) { real.forEach((c) => play(c, false)); const io = new IntersectionObserver((es) => es.forEach((e) => play(e.target, e.isIntersecting)), { threshold: 0.15 }); real.forEach((c) => io.observe(c)); }
+  else real.forEach((c) => play(c, true));
 })();

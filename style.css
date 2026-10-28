@@ -1568,7 +1568,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .tool-group[hidden] { display: none; }
 .tool-list .tool-visual { grid-template-columns: 1fr; align-items: start; justify-items: stretch; text-align: start; padding: 18px 20px 20px; gap: 6px; transition: border-color .2s, transform .2s; }
 .tool-list .tool-visual:hover { border-color: var(--gold); transform: translateY(-2px); }
-.tool-list .tool-visual .b3d { width: 300px; height: 300px; transform: scale(.56); transform-origin: top center; margin: -4px auto -132px; pointer-events: none; }
+.tool-list .tool-visual .b3d { width: 300px; height: 300px; transform: scale(.56); transform-origin: top center; margin: -4px auto -112px; pointer-events: none; }
 .tool-list .tool-visual .tool-body h3 { font-size: 18.5px; margin-bottom: 12px; line-height: 1.35; }
 .tool-list .tool-visual .tool-body p.tool-desc { margin: 0 0 12px; font-size: 14.5px; line-height: 1.65; }
 .tool-list .tool-tags { margin-top: 0; gap: 6px; } .tool-list .tool-tags li { font-size: 12px; padding: 3px 9px; }
@@ -1600,3 +1600,5 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .tool-list .tool-visual:not(.tool-featured) .tool-actions { justify-content: flex-start; margin-top: 4px; }
   .tool-list .tool-visual:not(.tool-featured) .tool-actions .btn { padding: 8px 14px; font-size: 14px; }
 }
+.tool-list .tool-card { position: relative; }
+.badge-float { position: absolute; top: 14px; inset-inline-end: 14px; vertical-align: 0; margin: 0; z-index: 1; }
