@@ -905,20 +905,28 @@ if (location.hash.startsWith("#project-")) {
   const bar = document.getElementById("kind-bar");
   const list = document.getElementById("tool-list");
   if (!bar || !list) return;
-  const cards = [...list.querySelectorAll(".tool-card, .tool-group")];
-  const real = cards.filter((c) => c.classList.contains("tool-card"));
-  const btns = [...bar.querySelectorAll(".kind")];
+  const cards = [...list.querySelectorAll(".tool-card")];
+  const btns = [...bar.querySelectorAll("button.kind")];
   btns.forEach((b) => {
-    const n = b.dataset.kind === "all" ? real.length : real.filter((c) => c.dataset.kind === b.dataset.kind).length;
+    const n = b.dataset.kind === "all" ? cards.length : cards.filter((c) => c.dataset.kind === b.dataset.kind).length;
     if (!n) b.hidden = true;
     b.insertAdjacentHTML("beforeend", ` <b class="fcount">${n}</b>`);
     b.addEventListener("click", () => {
       btns.forEach((x) => x.classList.toggle("active", x === b));
-      cards.forEach((c) => (c.hidden = !(b.dataset.kind === "all" || (c.dataset.kind || "").split(" ").includes(b.dataset.kind))));
+      cards.forEach((c) => (c.hidden = !(b.dataset.kind === "all" || c.dataset.kind === b.dataset.kind)));
     });
   });
-  // card animations run while the card is on screen (saves the battery of phones on long pages)
-  const play = (c, on) => { c.classList.toggle("anim-on", on); c.querySelectorAll("svg").forEach((v) => { try { on ? v.unpauseAnimations() : v.pauseAnimations(); } catch (e) {} }); };
-  if ("IntersectionObserver" in window) { real.forEach((c) => play(c, false)); const io = new IntersectionObserver((es) => es.forEach((e) => play(e.target, e.isIntersecting)), { threshold: 0.15 }); real.forEach((c) => io.observe(c)); }
-  else real.forEach((c) => play(c, true));
+})();
+
+// Free tools: the tool-name buttons scroll to that tool and light it up for a moment
+(() => {
+  const bar = document.getElementById("kind-bar"); if (!bar) return;
+  bar.querySelectorAll("a.jump").forEach((a) => a.addEventListener("click", (e) => {
+    const t = document.querySelector(a.getAttribute("href")); if (!t) return; e.preventDefault();
+    t.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    history.replaceState(null, "", a.getAttribute("href"));
+    bar.querySelectorAll("a.jump").forEach((x) => x.classList.toggle("on", x === a));
+    document.querySelectorAll(".tool-card.is-target").forEach((x) => x.classList.remove("is-target"));
+    t.classList.add("is-target"); clearTimeout(t._tg); t._tg = setTimeout(() => t.classList.remove("is-target"), 2200);
+  }));
 })();
