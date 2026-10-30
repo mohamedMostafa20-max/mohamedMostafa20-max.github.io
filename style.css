@@ -1567,3 +1567,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .tool-list .tool-card { scroll-margin-top: 96px; transition: border-color .4s, box-shadow .4s; }
 .tool-list .tool-card.is-target { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 0 28px rgba(240,198,116,.18); }
 @media (max-width: 640px) { .kind-bar { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; } .kind-bar::-webkit-scrollbar { display: none; } .kind.jump, .kind-bar .fd-open { flex: none; } }
+
+/* 7 expertise cards: the last one spans the row instead of standing alone */
+.exp-grid > .exp:last-child { grid-column: 1 / -1; }
