@@ -181,7 +181,7 @@
 <style>
 .intro{position:fixed;inset:0;z-index:9999;background:#0b1522;overflow:hidden;transition:opacity .9s ease,transform .9s cubic-bezier(.7,0,.3,1),filter .9s ease}
 .intro video,.intro .ip{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.intro .ip{background:#0b1522 url(../images/intro/intro-poster.webp) center/cover no-repeat}
+.intro .ip{background:#0b1522 url(../images/intro/intro-poster.webp?v=2) center/cover no-repeat}
 .intro::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,14,24,.55) 0%,rgba(7,14,24,.15) 35%,rgba(7,14,24,.35) 62%,rgba(7,14,24,.92) 100%)}
 .intro .it{position:absolute;z-index:2;left:clamp(20px,6vw,96px);right:clamp(20px,6vw,96px);bottom:clamp(64px,12vh,140px);color:#fff;font-family:var(--f-main,system-ui)}
 .intro h2{margin:0;font-size:clamp(34px,6.4vw,92px);line-height:1;letter-spacing:-.02em;font-weight:800;opacity:0;transform:translateY(24px);animation:iu 1s .25s forwards}
@@ -206,12 +206,12 @@ html.intro-on,html.intro-on body{overflow:hidden}
   var seen=false; try{seen=sessionStorage.getItem('mm-intro')==='1'}catch(e){}
   if(seen||location.hash){el.remove();return}
   el.hidden=false; document.documentElement.classList.add('intro-on');
-  var c=navigator.connection||{}, still=matchMedia('(prefers-reduced-motion: reduce)').matches||c.saveData||/(^|-)2g/.test(c.effectiveType||'');
+  var c=navigator.connection||{}, still=!!c.saveData;
   if(!still){
-    var v=document.createElement('video'); v.muted=true; v.autoplay=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); v.setAttribute('muted',''); v.preload='auto'; v.poster='../images/intro/intro-poster.webp';
+    var v=document.createElement('video'); v.muted=true; v.autoplay=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); v.setAttribute('muted',''); v.preload='auto'; v.poster='../images/intro/intro-poster.webp?v=2';
     var big=Math.max(screen.width,screen.height)*(window.devicePixelRatio||1)>1400&&innerWidth>900;
-    [['../images/intro/intro-'+(big?'1080':'720')+'.webm','video/webm'],['../images/intro/intro-720.mp4','video/mp4']].forEach(function(s){var o=document.createElement('source');o.src=s[0];o.type=s[1];v.appendChild(o)});
-    el.insertBefore(v,el.firstChild.nextSibling); var p=v.play(); if(p&&p.catch)p.catch(function(){});
+    [['../images/intro/intro-'+(big?'1080':'720')+'.webm?v=2','video/webm'],['../images/intro/intro-720.mp4?v=2','video/mp4']].forEach(function(s){var o=document.createElement('source');o.src=s[0];o.type=s[1];v.appendChild(o)});
+    el.insertBefore(v,el.firstChild.nextSibling); var tryPlay=function(){var p=v.play(); if(p&&p.catch)p.catch(function(){});}; tryPlay(); v.addEventListener('canplay',tryPlay,{once:true}); document.addEventListener('visibilitychange',function(){if(!document.hidden)tryPlay()});
   }
   var done=false;
   function go(){ if(done)return; done=true; try{sessionStorage.setItem('mm-intro','1')}catch(e){}
