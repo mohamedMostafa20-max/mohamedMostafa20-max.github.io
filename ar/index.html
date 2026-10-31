@@ -177,6 +177,57 @@
 <link href="../images/apple-touch-icon.png" rel="apple-touch-icon"/>
 </head>
 <body>
+<!-- intro video: shown once per visit on the home page, leaves on the first scroll -->
+<style>
+.intro{position:fixed;inset:0;z-index:9999;background:#0b1522;overflow:hidden;transition:opacity .9s ease,transform .9s cubic-bezier(.7,0,.3,1),filter .9s ease}
+.intro video,.intro .ip{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.intro .ip{background:#0b1522 url(../images/intro/intro-poster.webp) center/cover no-repeat}
+.intro::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,14,24,.55) 0%,rgba(7,14,24,.15) 35%,rgba(7,14,24,.35) 62%,rgba(7,14,24,.92) 100%)}
+.intro .it{position:absolute;z-index:2;left:clamp(20px,6vw,96px);right:clamp(20px,6vw,96px);bottom:clamp(64px,12vh,140px);color:#fff;font-family:var(--f-main,system-ui)}
+.intro h2{margin:0;font-size:clamp(34px,6.4vw,92px);line-height:1;letter-spacing:-.02em;font-weight:800;opacity:0;transform:translateY(24px);animation:iu 1s .25s forwards}
+.intro .ir{display:block;margin-top:14px;font-size:clamp(15px,2vw,24px);color:#f0c674;font-weight:600;opacity:0;transform:translateY(18px);animation:iu 1s .5s forwards}
+.intro .il{display:block;margin-top:10px;font-size:clamp(12.5px,1.25vw,16px);color:rgba(255,255,255,.75);opacity:0;animation:iu 1s .75s forwards}
+.intro .ic{position:absolute;z-index:2;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.8);font:600 12px/1 var(--f-main,system-ui);letter-spacing:.18em;text-transform:uppercase;background:none;border:0;cursor:pointer}
+.intro .ic i{display:block;width:22px;height:36px;border:2px solid rgba(255,255,255,.7);border-radius:12px;position:relative}
+.intro .ic i::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#f0c674;animation:iw 1.6s infinite}
+.intro.out{opacity:0;transform:translateY(-6vh) scale(1.04);filter:blur(4px);pointer-events:none}
+html.intro-on,html.intro-on body{overflow:hidden}
+@keyframes iu{to{opacity:1;transform:none}}@keyframes iw{0%{opacity:0;transform:translateY(-4px)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+@media (prefers-reduced-motion:reduce){.intro h2,.intro .ir,.intro .il{animation:none;opacity:1;transform:none}}
+</style>
+<div class="intro" id="intro" hidden aria-label="م. محمد مصطفى">
+  <div class="ip"></div>
+  <div class="it"><h2>م. محمد مصطفى</h2><span class="ir">مهندس تصميم منشآت معدنية</span><span class="il">مصانع · مظلات · منشآت شد · مشاريع خاصة — مصر والسعودية والإمارات</span></div>
+  <button class="ic" type="button" id="introGo"><i></i>انزل لأسفل</button>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('intro'); if(!el) return;
+  var seen=false; try{seen=sessionStorage.getItem('mm-intro')==='1'}catch(e){}
+  if(seen||location.hash){el.remove();return}
+  el.hidden=false; document.documentElement.classList.add('intro-on');
+  var c=navigator.connection||{}, still=matchMedia('(prefers-reduced-motion: reduce)').matches||c.saveData||/(^|-)2g/.test(c.effectiveType||'');
+  if(!still){
+    var v=document.createElement('video'); v.muted=true; v.autoplay=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); v.setAttribute('muted',''); v.preload='auto'; v.poster='../images/intro/intro-poster.webp';
+    var big=Math.max(screen.width,screen.height)*(window.devicePixelRatio||1)>1400&&innerWidth>900;
+    [['../images/intro/intro-'+(big?'1080':'720')+'.webm','video/webm'],['../images/intro/intro-720.mp4','video/mp4']].forEach(function(s){var o=document.createElement('source');o.src=s[0];o.type=s[1];v.appendChild(o)});
+    el.insertBefore(v,el.firstChild.nextSibling); var p=v.play(); if(p&&p.catch)p.catch(function(){});
+  }
+  var done=false;
+  function go(){ if(done)return; done=true; try{sessionStorage.setItem('mm-intro','1')}catch(e){}
+    el.classList.add('out'); document.documentElement.classList.remove('intro-on'); window.scrollTo(0,0);
+    setTimeout(function(){el.remove()},950); off(); }
+  var y0=null;
+  function wh(e){ if(Math.abs(e.deltaY)>4) go() }
+  function ts(e){ y0=e.touches[0].clientY }
+  function tm(e){ if(y0!==null&&Math.abs(e.touches[0].clientY-y0)>18) go() }
+  function kd(e){ if(['ArrowDown','PageDown','Space',' ','Enter','Escape','End'].indexOf(e.key)>-1||e.code==='Space') go() }
+  function off(){ removeEventListener('wheel',wh); removeEventListener('touchstart',ts); removeEventListener('touchmove',tm); removeEventListener('keydown',kd) }
+  addEventListener('wheel',wh,{passive:true}); addEventListener('touchstart',ts,{passive:true}); addEventListener('touchmove',tm,{passive:true}); addEventListener('keydown',kd);
+  document.getElementById('introGo').addEventListener('click',go); el.addEventListener('click',function(e){ if(e.target===el||e.target.tagName==='VIDEO') go() });
+})();
+</script>
+
 <svg aria-hidden="true" height="0" style="position:absolute" width="0">
 <symbol id="i-wa" viewbox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></symbol>
 <symbol id="i-home" viewbox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"></path></symbol>
