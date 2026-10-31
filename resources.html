@@ -245,6 +245,24 @@
         <a class="kind jump" href="#tool-footing" data-ar="القواعد المسلحة">Footing</a>
         <button type="button" class="btn btn-gold btn-sm fd-open" id="fd-open" style="margin-inline-start:auto" title="Design a whole SAP2000 model to ECP 205"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg> <span>Import s2k</span></button>
       </div>
+<style>
+.s2k-howto{margin:14px 0 22px;border:1px solid rgba(240,198,116,.35);border-radius:14px;background:rgba(240,198,116,.05);overflow:hidden}
+.s2k-howto summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 16px;font-weight:600}
+.s2k-howto summary::-webkit-details-marker{display:none}
+.s2k-howto summary .pl{flex:none;width:34px;height:34px;border-radius:50%;background:var(--gold,#f0c674);display:grid;place-items:center;transition:transform .25s}
+.s2k-howto summary .pl::before{content:"";margin-left:3px;border-left:11px solid #1a1408;border-top:7px solid transparent;border-bottom:7px solid transparent}
+[dir="rtl"] .s2k-howto summary .pl::before{margin-left:0;margin-right:3px;border-left:0;border-right:11px solid #1a1408}
+.s2k-howto summary:hover .pl{transform:scale(1.08)}
+.s2k-howto summary small{display:block;font-weight:400;opacity:.7;font-size:12.5px;margin-top:2px}
+.s2k-howto summary .ch{margin-inline-start:auto;opacity:.6;transition:transform .25s}
+.s2k-howto[open] summary .ch{transform:rotate(180deg)}
+.s2k-howto video{display:block;width:100%;height:auto;aspect-ratio:1330/720;background:#0b1522;border-top:1px solid rgba(240,198,116,.2)}
+</style>
+      <details class="s2k-howto" id="s2k-howto">
+        <summary><span class="pl" aria-hidden="true"></span><span>Watch: how to use Import s2k<small>2:22 video, no sound — load the model, member groups, settings, check, and the calculation report</small></span><span class="ch" aria-hidden="true">▾</span></summary>
+        <video controls muted playsinline preload="none" poster="images/howto/import-s2k-poster.webp" width="1330" height="720"><source src="images/howto/import-s2k.webm" type="video/webm"><source src="images/howto/import-s2k.mp4" type="video/mp4"></video>
+      </details>
+
       <!--
         To add a resource: copy one <article class="tool-card"> block below, set data-kind="web" | "sap" | "idea",
         change the title and the file links (put the files in the tools/ folder), and the picture/visual.
@@ -404,5 +422,6 @@ var base=new URL('/tools/frame-designer/',location.href).href;window.__FD_WORKER
 try{window.goatcounter&&goatcounter.count&&goatcounter.count({path:'import-s2k',title:'Import s2k',event:true})}catch(e){}
 Promise.all([css(base+'fd.css?v='+V),js(base+'fd-core.js?v='+V)]).then(function(){return js(base+'fd-ui.js?v='+V)}).then(function(){FrameDesigner.open()})
 .catch(function(e){alert('Could not open the designer: '+e.message)}).then(function(){busy=0;b.style.opacity=''})});})();</script>
+<script>(function(){var d=document.getElementById("s2k-howto");if(!d)return;var v=d.querySelector("video");d.addEventListener("toggle",function(){if(d.open){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})})();</script>
 </body>
 </html>
