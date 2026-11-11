@@ -32,13 +32,13 @@ for page, (title, desc) in PAGES.items():
         if im and h3 and h3.get("data-ar"):
             loc = art.find(class_="meta-loc")
             where = BeautifulSoup(loc["data-ar"], "html.parser").get_text().strip() if loc and loc.get("data-ar") else ""
-            im["alt"] = h3["data-ar"] + ("، " + where if where else "") + "، تصميم منشآت معدنية م. محمد مصطفى"
+            im["alt"] = im.get("data-alt-ar") or (h3["data-ar"] + ("، " + where if where else "") + "، تصميم منشآت معدنية م. محمد مصطفى")
     for el in soup.select("[data-ar]"):
         el["data-en"] = el.decode_contents()
         ar = el["data-ar"]
         el.clear()
         el.append(BeautifulSoup(ar, "html.parser"))
-    for tag, attr in (("link", "href"), ("script", "src"), ("img", "src"), ("a", "href"), ("source", "srcset")):
+    for tag, attr in (("link", "href"), ("script", "src"), ("img", "src"), ("a", "href"), ("source", "srcset"), ("source", "src"), ("video", "poster")):
         for el in soup.find_all(tag):
             v = el.get(attr)
             if v and ASSET.match(v):
@@ -54,6 +54,14 @@ for page, (title, desc) in PAGES.items():
         m = soup.find("meta", property=prop)
         if m:
             m["content"] = val
+    # FAQ structured data in Arabic, rebuilt from the translated questions on the page
+    fq = soup.find("script", id="faq-ld")
+    if fq:
+        import json
+        ents = [{"@type": "Question", "name": d.find(class_="faq-q").get_text(" ", strip=True),
+                 "acceptedAnswer": {"@type": "Answer", "text": d.find(class_="faq-a").get_text(" ", strip=True)}}
+                for d in soup.select("details.faq-item")]
+        fq.string = "\n" + json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "ar", "mainEntity": ents}, ensure_ascii=False, indent=1) + "\n"
     btn = soup.find(id="lang-toggle")
     btn.string = "English"
     btn["aria-label"] = "Switch to English"
