@@ -212,3 +212,21 @@
 .fdrep .sol table.gtab td{text-align:left}
 .fdrep .sol table.ptab td,.fdrep .sol table.ptab th{font-size:14px}
 .fdrep .sol ul.mnotes{font-family:var(--f-body);font-size:13.5px;line-height:1.5;padding-left:20px;margin:6px 0}
+
+.fd-r3bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-bottom:10px}
+.fd-r3f{display:inline-flex;gap:6px;flex-wrap:wrap}
+.fd-r3f button{font:inherit;font-size:13px;padding:6px 12px;border-radius:6px;border:1px solid var(--line);background:transparent;color:inherit;cursor:pointer}
+.fd-r3f button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.fd-r3leg{display:inline-flex;flex-wrap:wrap;gap:4px 12px;font-size:12.5px;align-items:center;opacity:.9}
+.fd-r3leg i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.fd-r3wrap{position:relative;height:min(74vh,820px);min-height:480px;background:#0e1826;border-radius:8px;overflow:hidden}
+.fd-r3wrap canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+.fd-r3hint{position:absolute;left:10px;bottom:8px;right:10px;font-size:12px;color:#9fb0c3;pointer-events:none}
+.fd-r3tip{position:absolute;max-width:220px;background:#16202e;color:#e8eef5;border:1px solid #33465c;border-radius:6px;padding:5px 9px;font-size:12.5px;pointer-events:none;z-index:2}
+.fd-r3side{position:absolute;top:0;right:0;bottom:0;width:min(360px,92%);background:var(--sheet);border-left:1px solid var(--line);padding:14px 16px;overflow:auto;z-index:3;font-size:13.5px}
+.fd-r3side h4{margin:0 0 4px;font-size:16px}
+.fd-r3x{position:absolute;top:8px;right:10px;border:0;background:transparent;color:inherit;font-size:22px;line-height:1;cursor:pointer}
+.fd-r3res{display:flex;justify-content:space-between;align-items:center;border:1px solid;border-left-width:4px;border-radius:6px;padding:8px 12px;margin:12px 0 8px;font-size:15px}
+.fd-r3tb{width:100%;margin-top:8px}
+.fd-r3tb input{width:84px;font:inherit;padding:4px 6px;border:1px solid var(--line);border-radius:5px;background:transparent;color:inherit}
+.fd-r3btn{display:flex;flex-direction:column;gap:8px;margin-top:10px}
