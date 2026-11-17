@@ -930,3 +930,8 @@ if (location.hash.startsWith("#project-")) {
     t.classList.add("is-target"); clearTimeout(t._tg); t._tg = setTimeout(() => t.classList.remove("is-target"), 2200);
   }));
 })();
+
+/* built band parallax */
+(function(){var b=document.querySelector('.built-band');if(!b||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var im=b.querySelector('img'),t=0;
+function f(){t=0;var r=b.getBoundingClientRect(),vh=innerHeight;if(r.bottom<0||r.top>vh)return;var p=(r.top+r.height/2-vh/2)/vh;im.style.setProperty('--py',(p*-60).toFixed(1)+'px')}
+addEventListener('scroll',function(){if(!t){t=1;requestAnimationFrame(f)}},{passive:true});f()})();
