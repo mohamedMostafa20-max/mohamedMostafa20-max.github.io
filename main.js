@@ -935,3 +935,56 @@ if (location.hash.startsWith("#project-")) {
 (function(){var b=document.querySelector('.built-band');if(!b||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var im=b.querySelector('img'),t=0;
 function f(){t=0;var r=b.getBoundingClientRect(),vh=innerHeight;if(r.bottom<0||r.top>vh)return;var p=(r.top+r.height/2-vh/2)/vh;im.style.setProperty('--py',(p*-60).toFixed(1)+'px')}
 addEventListener('scroll',function(){if(!t){t=1;requestAnimationFrame(f)}},{passive:true});f()})();
+
+/* featured: rotate through all projects, calmly; pauses on hover/focus, when hidden or off-screen */
+(function(){
+  var el=document.getElementById('feat-data'),grid=document.querySelector('.feat-grid');if(!el||!grid)return;
+  var P;try{P=JSON.parse(el.textContent)}catch(e){return}if(!P||P.length<5)return;
+  var AR=document.documentElement.lang==='ar'||document.documentElement.dir==='rtl'?1:0;
+  var anyImg=grid.querySelector('img'),base=(anyImg.getAttribute('src')||'').replace(/[^\/]*$/,'');
+  var tiles=[].slice.call(grid.querySelectorAll('.feat')),main=tiles[0],side=tiles.slice(1,4);
+  var LANG=function(){return document.documentElement.lang==='ar'?1:0};
+  var DUR=6500,k=0,timer=null,t0=0,left=DUR,paused=false,inView=true;
+  var pair=main.querySelector('.feat-pair');
+  var one=document.createElement('span');one.className='fp-one';
+  var imA=new Image(),imB=new Image();[imA,imB].forEach(function(x){x.alt='';x.decoding='async';one.appendChild(x)});
+  var bar=document.createElement('span');bar.className='feat-bar';bar.innerHTML='<i></i>';
+  var cnt=document.createElement('span');cnt.className='feat-count';
+  main.appendChild(bar);main.appendChild(cnt);
+  var mb=main.querySelector('.feat-body'),mT=mb.querySelector('strong'),mX=mb.querySelector('.feat-text');
+  var pad=function(n){return(n<10?'0':'')+n};
+  function fillMain(p,first){
+    var L=LANG(),cur=imA.classList.contains('on')?imA:imB,nx=cur===imA?imB:imA;
+    if(pair&&!first){pair.replaceWith(one);pair=null}
+    nx.src=base+p.img;nx.alt=p.t[L];
+    var go=function(){nx.classList.add('on');cur.classList.remove('on')};
+    nx.complete?requestAnimationFrame(go):nx.onload=go;
+    mb.classList.add('feat-swap','out');
+    setTimeout(function(){mT.textContent=p.t[L];mX.textContent=p.d[L]||p.l[L];mb.classList.remove('out')},380);
+    main.dataset.open=p.id;cnt.textContent=pad(k%P.length+1)+' / '+P.length;
+  }
+  function fillSide(t,p){
+    t.classList.add('swapping');
+    setTimeout(function(){var L=LANG(),im=t.querySelector('.feat-img img');im.src=base+p.img;im.alt=p.t[L];
+      t.querySelector('.feat-body strong').textContent=p.t[L];t.querySelector('.feat-text').textContent=p.l[L]||p.d[L];
+      t.dataset.open=p.id;t.classList.remove('swapping')},420);
+  }
+  function show(first){
+    if(!first)fillMain(P[k%P.length]);
+    side.forEach(function(t,i){setTimeout(function(){fillSide(t,P[(k+1+i)%P.length])},first?0:180*(i+1))});
+    cnt.textContent=pad(k%P.length+1)+' / '+P.length;
+  }
+  function anim(){bar.firstChild.style.transition='none';bar.firstChild.style.width=((1-left/DUR)*100)+'%';
+    if(paused||!inView)return;requestAnimationFrame(function(){bar.firstChild.style.transition='width '+left+'ms linear';bar.firstChild.style.width='100%'})}
+  function schedule(){clearTimeout(timer);if(paused||!inView||document.hidden)return;t0=Date.now();anim();
+    timer=setTimeout(function(){k++;left=DUR;show(false);schedule()},left)}
+  function pause(){if(paused)return;paused=true;clearTimeout(timer);left=Math.max(300,left-(Date.now()-t0));anim()}
+  function resume(){if(!paused)return;paused=false;schedule()}
+  grid.addEventListener('mouseenter',pause);grid.addEventListener('mouseleave',resume);
+  grid.addEventListener('focusin',pause);grid.addEventListener('focusout',resume);
+  document.addEventListener('visibilitychange',function(){document.hidden?(clearTimeout(timer),left=Math.max(300,left-(Date.now()-t0))):schedule()});
+  if('IntersectionObserver'in window)new IntersectionObserver(function(e){var v=e[0].isIntersecting;if(v===inView)return;inView=v;if(!v){clearTimeout(timer);left=Math.max(300,left-(Date.now()-t0));anim()}else schedule()},{threshold:.35}).observe(grid);
+  imA.src=base+P[0].img;imA.classList.add('on');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){show(true);return}
+  show(true);schedule();
+})();
